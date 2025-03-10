@@ -5,17 +5,136 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WhatsApp Bots & Programming</title>
     <link rel="stylesheet" href="assets/styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-color: #121212;
+            color: white;
+        }
+        header {
+            background-image: url('https://files.catbox.moe/94c8h9.jpg');
+            padding: 50px;
+            color: white;
+        }
+        h1 {
+            font-size: 36px;
+            font-weight: bold;
+        }
+        .category {
+            padding: 20px;
+            margin: 20px auto;
+            width: 90%;
+            max-width: 800px;
+            border-radius: 10px;
+            color: white;
+        }
+        .red { background-color: red; }
+        .blue { background-color: blue; }
+        .green { background-color: green; }
+        .yellow { background-color: yellow; color: black; }
+        .black { background-color: black; color: white; }
+        .white { background-color: white; color: black; }
+        p {
+            font-size: 16px;
+        }
+        pre {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 10px;
+            border-radius: 5px;
+            text-align: left;
+            overflow-x: auto;
+        }
+        .platform-links {
+            margin-top: 30px;
+        }
+        .platform-links a {
+            display: inline-block;
+            margin: 10px;
+            font-size: 20px;
+            color: white;
+        }
+    </style>
 </head>
 <body>
-    <header style="background-image: url('https://files.catbox.moe/94c8h9.jpg');">
+
+    <header>
         <h1>WhatsApp Bots & Programming</h1>
     </header>
 
-    <section>
-        <p>WhatsApp bots are automated chat systems used for customer service, marketing, and business automation...</p>
-        <p>(Include 500+ words here describing the benefits of bots, programming languages used, implementation steps, etc.)</p>
-    </section>
+    <div class="category red">
+        <h2>WhatsApp Bots</h2>
+        <p>WhatsApp bots are automated systems that interact with users over WhatsApp. They are used in customer service, 
+            marketing, business automation, and more...</p>
+        <p>(500+ word description of WhatsApp bots: benefits, languages used, implementation, etc.)</p>
+    </div>
 
-    <a href="index.html">Back to Home</a>
+    <div class="category blue">
+        <h2>JavaScript</h2>
+        <p>JavaScript is a powerful scripting language used in web development for interactivity and dynamic content.</p>
+        <pre>
+            // Example: Print "Hello, World!"
+            console.log("Hello, World!");
+        </pre>
+    </div>
+
+    <div class="category green">
+        <h2>Python</h2>
+        <p>Python is a versatile programming language used in web development, AI, automation, and more.</p>
+        <pre>
+            # Example: Print "Hello, World!"
+            print("Hello, World!")
+        </pre>
+    </div>
+
+    <div class="category yellow">
+        <h2>HTML</h2>
+        <p>HTML (HyperText Markup Language) is the foundation of web pages, used to structure content.</p>
+        <pre>
+            &lt;!-- Example: Simple HTML Page --&gt;
+            &lt;html&gt;
+                &lt;head&gt;&lt;title&gt;Hello World&lt;/title&gt;&lt;/head&gt;
+                &lt;body&gt;&lt;h1&gt;Hello, World!&lt;/h1&gt;&lt;/body&gt;
+            &lt;/html&gt;
+        </pre>
+    </div>
+
+    <div class="category black">
+        <h2>CSS</h2>
+        <p>CSS (Cascading Style Sheets) is used for styling HTML elements.</p>
+        <pre>
+            /* Example: Styling a heading */
+            h1 {
+                color: blue;
+                font-size: 24px;
+            }
+        </pre>
+    </div>
+
+    <div class="category white">
+        <h2>More Programming Languages</h2>
+        <p>Other popular languages include PHP, C++, Java, Swift, and Go...</p>
+        <pre>
+            // Example: Java - Print "Hello, World!"
+            class HelloWorld {
+                public static void main(String[] args) {
+                    System.out.println("Hello, World!");
+                }
+            }
+        </pre>
+    </div>
+
+    <div class="platform-links">
+        <h2>Connect with Me</h2>
+        <a href="https://github.com/Fred1e"><i class="fab fa-github"></i> GitHub</a>
+        <a href="https://whatsapp.com/channel/0029VaihcQv84Om8LP59fO3f"><i class="fab fa-whatsapp"></i> WhatsApp Channel</a>
+        <a href="https://youtube.com/@freeonlinetvT1"><i class="fab fa-youtube"></i> YouTube</a>
+    </div>
+
+    <a href="index.html"><button style="padding: 10px; background-color: #ff6347; color: white; font-size: 16px; border: none; border-radius: 5px;">Back to Home</button></a>
+
 </body>
 </html>
