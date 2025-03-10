@@ -5,17 +5,127 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About FredieTech</title>
     <link rel="stylesheet" href="assets/styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            scroll-behavior: smooth;
+            background-color: #121212;
+            color: white;
+        }
+
+        header {
+            background-image: url('https://files.catbox.moe/aad6wc.jpg');
+            padding: 50px;
+            color: white;
+        }
+
+        section {
+            padding: 50px 20px;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        button {
+            padding: 12px 25px;
+            font-size: 18px;
+            cursor: pointer;
+            margin-top: 10px;
+            border: none;
+            color: white;
+            font-weight: bold;
+            border-radius: 5px;
+            background-color: blue;
+        }
+
+        .loading-screen {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: black;
+            justify-content: center;
+            align-items: center;
+            font-size: 50px;
+            font-weight: bold;
+        }
+
+        .fe {
+            animation: colorChange 2s infinite;
+        }
+
+        @keyframes colorChange {
+            0% { color: red; }
+            25% { color: blue; }
+            50% { color: green; }
+            75% { color: yellow; }
+            100% { color: red; }
+        }
+
+        .projects {
+            margin-top: 50px;
+            padding: 30px;
+            background: #1e1e1e;
+            border-radius: 10px;
+        }
+
+        .projects a {
+            display: block;
+            margin: 10px 0;
+            color: #00aaff;
+            font-size: 18px;
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
-    <header style="background-image: url('https://files.catbox.moe/aad6wc.jpg');">
+
+    <header>
         <h1>About FredieTech</h1>
     </header>
 
     <section>
-        <p>FredieTech is a passionate programmer dedicated to creating websites, WhatsApp bots, and interactive applications...</p>
-        <p>(Include 700+ words here detailing your programming journey, skills, projects, etc.)</p>
+        <h2>Who is FredieTech?</h2>
+        <p>
+            (Replace this with your **700+ words** describing your programming journey, experience with WhatsApp bots, website development, tech expertise, 
+            and how you contribute to the community.)
+        </p>
     </section>
 
-    <a href="index.html">Back to Home</a>
+    <section>
+        <h2>Search Mode</h2>
+        <button onclick="startSearch()">Start Search</button>
+    </section>
+
+    <div class="loading-screen" id="loadingScreen">
+        <span class="fe">FE</span>
+    </div>
+
+    <section class="projects">
+        <h2>My Projects & Development</h2>
+        <a href="https://github.com/Fred1e/lucky_md" target="_blank">WhatsApp Bot Repository</a>
+        <a href="https://github.com/Fred1e" target="_blank">GitHub Account</a>
+        <a href="https://whatsapp.com/channel/0029VaihcQv84Om8LP59fO3f" target="_blank">WhatsApp Channel</a>
+        <a href="https://youtube.com/@freeonlinetvT1" target="_blank">YouTube Channel</a>
+        <p>Contact me on WhatsApp:</p>
+        <a href="https://wa.me/255752593977" target="_blank">Contact us1</a>
+        <a href="https://wa.me/255620814108" target="_blank">Contact us2</a>
+    </section>
+
+    <a href="index.html"><button>Back to Home</button></a>
+
+    <script>
+        function startSearch() {
+            document.getElementById('loadingScreen').style.display = 'flex';
+            setTimeout(() => {
+                window.location.href = 'dashboard.html'; 
+            }, 2000);
+        }
+    </script>
+
 </body>
 </html>
