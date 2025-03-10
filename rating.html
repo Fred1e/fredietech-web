@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rate the Website</title>
+    <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+    <header style="background-image: url('https://files.catbox.moe/hqt8ca.jpg');">
+        <h1>Rate FredieTech</h1>
+    </header>
+
+    <div class="rating">
+        <p>Give your rating:</p>
+        <span onclick="rate(1)">⭐</span>
+        <span onclick="rate(2)">⭐</span>
+        <span onclick="rate(3)">⭐</span>
+        <span onclick="rate(4)">⭐</span>
+        <span onclick="rate(5)">⭐</span>
+    </div>
+
+    <script>
+        function rate(stars) {
+            alert("You rated " + stars + " stars! Thank you!");
+        }
+    </script>
+
+    <a href="index.html">Back to Home</a>
+</body>
+</html>
