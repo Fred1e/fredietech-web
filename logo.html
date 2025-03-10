@@ -32,6 +32,56 @@
             color: lightgray;
         }
 
+        /* Video player container */
+        .video-container {
+            margin: 20px auto;
+            width: 90%;
+            max-width: 600px;
+            background: #222;
+            padding: 15px;
+            border-radius: 5px;
+        }
+
+        video {
+            width: 100%;
+            border-radius: 5px;
+        }
+
+        .video-controls {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .video-controls button {
+            padding: 12px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            color: white;
+        }
+
+        .play-btn { background-color: #4CAF50; }
+        .pause-btn { background-color: #FF5722; }
+        .prev-btn { background-color: #3F51B5; }
+        .next-btn { background-color: #009688; }
+        .forward-btn { background-color: #FF9800; }
+
+        .video-controls button:hover {
+            opacity: 0.8;
+        }
+
+        /* Video description */
+        .video-description {
+            font-size: 16px;
+            color: lightgray;
+            margin-top: 10px;
+        }
+
+        /* Platform styles */
         .platform-container {
             max-width: 800px;
             margin: 0 auto;
@@ -69,40 +119,8 @@
             margin-top: 10px;
         }
 
-        /* Different colors for each platform */
-        .canva-btn { background-color: #00C4CC; }
-        .fiverr-btn { background-color: #1DBF73; }
-        .freelogodesign-btn { background-color: #FF9800; }
-        .wix-btn { background-color: #FAAD00; }
-        .looka-btn { background-color: #0073E6; }
-        .designhill-btn { background-color: #673AB7; }
-        .hatchful-btn { background-color: #FF4081; }
-        .tailorbrands-btn { background-color: #009688; }
-        .brandcrowd-btn { background-color: #D50000; }
-        .logomakr-btn { background-color: #3F51B5; }
-        .logaster-btn { background-color: #4CAF50; }
-        .namecheaplogo-btn { background-color: #FF5722; }
-
         .platform button:hover {
             opacity: 0.8;
-        }
-
-        .support-links {
-            margin-top: 20px;
-        }
-
-        .support-links a {
-            display: inline-block;
-            margin: 5px;
-            background: #008000;
-            padding: 10px;
-            border-radius: 5px;
-            text-decoration: none;
-            color: white;
-        }
-
-        .support-links a:hover {
-            background: #006600;
         }
     </style>
 </head>
@@ -116,6 +134,22 @@
     Discover the best platforms for creating professional logos.
 </p>
 
+<!-- Video Player -->
+<div class="video-container">
+    <video id="logoVideo" src="https://files.catbox.moe/8s5eap.mp4"></video>
+    
+    <div class="video-controls">
+        <button class="prev-btn" onclick="prevVideo()">Prev</button>
+        <button class="play-btn" onclick="playVideo()">Play</button>
+        <button class="pause-btn" onclick="pauseVideo()">Pause</button>
+        <button class="next-btn" onclick="nextVideo()">Next</button>
+        <button class="forward-btn" onclick="forwardVideo()">+5s</button>
+    </div>
+
+    <p class="video-description">These videos showcase some sample logo designs created using different platforms.</p>
+</div>
+
+<!-- Platforms List -->
 <div class="platform-container">
     <div class="platform">
         <h2>Canva</h2>
@@ -134,71 +168,41 @@
         <p>Create free logos with this easy-to-use platform.</p>
         <button class="freelogodesign-btn" onclick="window.open('https://www.freelogodesign.org', '_blank')">Open</button>
     </div>
-
-    <div class="platform">
-        <h2>Wix Logo Maker</h2>
-        <p>Wix provides an AI-powered tool to create unique logos.</p>
-        <button class="wix-btn" onclick="window.open('https://www.wix.com/logo', '_blank')">Open</button>
-    </div>
-
-    <div class="platform">
-        <h2>Looka</h2>
-        <p>Looka uses AI to generate stunning logo designs.</p>
-        <button class="looka-btn" onclick="window.open('https://www.looka.com', '_blank')">Open</button>
-    </div>
-
-    <div class="platform">
-        <h2>Designhill</h2>
-        <p>Designhill is an AI-powered logo maker with customization options.</p>
-        <button class="designhill-btn" onclick="window.open('https://www.designhill.com/tools/logo-maker', '_blank')">Open</button>
-    </div>
-
-    <div class="platform">
-        <h2>Hatchful</h2>
-        <p>Hatchful by Shopify helps create business logos easily.</p>
-        <button class="hatchful-btn" onclick="window.open('https://www.shopify.com/tools/logo-maker', '_blank')">Open</button>
-    </div>
-
-    <div class="platform">
-        <h2>Tailor Brands</h2>
-        <p>Tailor Brands uses AI to generate high-quality logo designs.</p>
-        <button class="tailorbrands-btn" onclick="window.open('https://www.tailorbrands.com/logo-maker', '_blank')">Open</button>
-    </div>
-
-    <div class="platform">
-        <h2>BrandCrowd</h2>
-        <p>BrandCrowd offers thousands of customizable logo templates.</p>
-        <button class="brandcrowd-btn" onclick="window.open('https://www.brandcrowd.com', '_blank')">Open</button>
-    </div>
-
-    <div class="platform">
-        <h2>LogoMakr</h2>
-        <p>LogoMakr is a free and easy-to-use online logo creator.</p>
-        <button class="logomakr-btn" onclick="window.open('https://logomakr.com', '_blank')">Open</button>
-    </div>
-
-    <div class="platform">
-        <h2>Logaster</h2>
-        <p>Logaster helps generate high-quality logos instantly.</p>
-        <button class="logaster-btn" onclick="window.open('https://www.logaster.com', '_blank')">Open</button>
-    </div>
-
-    <div class="platform">
-        <h2>Namecheap Logo Maker</h2>
-        <p>Namecheap offers a free logo maker for branding needs.</p>
-        <button class="namecheaplogo-btn" onclick="window.open('https://www.namecheap.com/logo-maker/', '_blank')">Open</button>
-    </div>
 </div>
 
-<h2>Support My Platforms</h2>
-<div class="support-links">
-    <a href="https://github.com/Fred1e">GitHub</a>
-    <a href="https://github.com/Fred1e/lucky_md">WhatsApp Bot Repo</a>
-    <a href="https://whatsapp.com/channel/0029VaihcQv84Om8LP59fO3f">WhatsApp Channel</a>
-    <a href="https://youtube.com/@freeonlinetvT1">YouTube Channel</a>
-</div>
+<script>
+    const videos = [
+        "https://files.catbox.moe/8s5eap.mp4",
+        "https://files.catbox.moe/73jkvk.mp4",
+        "https://files.catbox.moe/xwd5qs.mp4"
+    ];
+    let currentVideoIndex = 0;
+    const videoElement = document.getElementById("logoVideo");
 
-<a href="index.html" class="canva-btn" style="display: inline-block; padding: 12px 20px; text-decoration: none; color: white; border-radius: 5px;">Back to Home</a>
+    function playVideo() {
+        videoElement.play();
+    }
+
+    function pauseVideo() {
+        videoElement.pause();
+    }
+
+    function nextVideo() {
+        currentVideoIndex = (currentVideoIndex + 1) % videos.length;
+        videoElement.src = videos[currentVideoIndex];
+        videoElement.play();
+    }
+
+    function prevVideo() {
+        currentVideoIndex = (currentVideoIndex - 1 + videos.length) % videos.length;
+        videoElement.src = videos[currentVideoIndex];
+        videoElement.play();
+    }
+
+    function forwardVideo() {
+        videoElement.currentTime += 5;
+    }
+</script>
 
 </body>
 </html>
