@@ -13,21 +13,21 @@
             text-align: center;
             scroll-behavior: smooth;
         }
-        
-        /* Tanzania Flag Colors on Top */
-        .tanzania-flag {
-            display: flex;
-            height: 50px;
-        }
-        .green { background-color: #17B636; flex: 1; }
-        .yellow { background-color: #FFD700; flex: 0.2; }
-        .black { background-color: #000000; flex: 0.6; }
-        .blue { background-color: #1E90FF; flex: 1; }
 
+        /* Header with Background for Description */
         header {
             background-image: url('https://files.catbox.moe/aad6wc.jpg');
-            padding: 40px;
+            padding: 60px 20px;
             color: white;
+            position: relative;
+        }
+
+        /* Overlay for Better Readability */
+        .header-overlay {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 30px;
+            border-radius: 10px;
+            display: inline-block;
         }
 
         section {
@@ -67,18 +67,11 @@
 </head>
 <body>
 
-    <!-- Tanzania Flag Colors on Top -->
-    <div class="tanzania-flag">
-        <div class="green"></div>
-        <div class="yellow"></div>
-        <div class="black"></div>
-        <div class="yellow"></div>
-        <div class="blue"></div>
-    </div>
-
     <header>
-        <h1>Welcome to FredieTech</h1>
-        <p>Explore programming, WhatsApp bots, media downloads, and more.</p>
+        <div class="header-overlay">
+            <h1>Welcome to FredieTech</h1>
+            <p>Explore programming, WhatsApp bots, media downloads, and more.</p>
+        </div>
     </header>
 
     <section id="about" class="section-bg-1">
