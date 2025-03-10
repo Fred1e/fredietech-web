@@ -38,50 +38,53 @@
             padding: 10px;
         }
 
-        .category {
-            background: #333;
-            color: white;
-            padding: 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            text-align: center;
-            margin: 10px 0;
-            width: 100%;
-            display: block;
-            border: 1px solid #555;
-        }
-
-        .category:hover {
-            background: #444;
-        }
-
-        .description-box {
-            display: none;
+        .platform {
             background: #222;
             padding: 15px;
-            margin-top: 5px;
             border-radius: 5px;
-            color: white;
+            text-align: center;
+            margin: 10px 0;
             border: 1px solid #333;
         }
 
-        .apply-btn {
-            display: inline-block;
-            padding: 12px 20px;
-            margin-top: 10px;
-            font-size: 16px;
-            font-weight: bold;
-            text-decoration: none;
-            color: white;
-            background: linear-gradient(45deg, #ff9800, #ff5722);
-            border-radius: 5px;
-            transition: background 0.3s ease-in-out;
-            width: 80%;
+        .platform h2 {
+            margin: 0;
+            font-size: 22px;
         }
 
-        .apply-btn:hover {
-            background: linear-gradient(45deg, #ff5722, #e64a19);
+        .platform p {
+            margin: 10px 0;
+            font-size: 16px;
+            color: lightgray;
+        }
+
+        .platform button {
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            color: white;
+            margin-top: 10px;
+        }
+
+        /* Different colors for each platform */
+        .canva-btn { background-color: #00C4CC; }
+        .fiverr-btn { background-color: #1DBF73; }
+        .freelogodesign-btn { background-color: #FF9800; }
+        .wix-btn { background-color: #FAAD00; }
+        .looka-btn { background-color: #0073E6; }
+        .designhill-btn { background-color: #673AB7; }
+        .hatchful-btn { background-color: #FF4081; }
+        .tailorbrands-btn { background-color: #009688; }
+        .brandcrowd-btn { background-color: #D50000; }
+        .logomakr-btn { background-color: #3F51B5; }
+        .logaster-btn { background-color: #4CAF50; }
+        .namecheaplogo-btn { background-color: #FF5722; }
+
+        .platform button:hover {
+            opacity: 0.8;
         }
 
         .support-links {
@@ -114,76 +117,76 @@
 </p>
 
 <div class="platform-container">
-    <div class="category" onclick="toggleDescription('canva')">Canva</div>
-    <div id="canva" class="description-box">
+    <div class="platform">
+        <h2>Canva</h2>
         <p>Canva is a free design tool with thousands of logo templates.</p>
-        <a href="https://www.canva.com" class="apply-btn">Visit Canva</a>
+        <button class="canva-btn" onclick="window.open('https://www.canva.com', '_blank')">Open</button>
     </div>
 
-    <div class="category" onclick="toggleDescription('fiverr')">Fiverr</div>
-    <div id="fiverr" class="description-box">
+    <div class="platform">
+        <h2>Fiverr</h2>
         <p>Fiverr allows you to hire professional designers for custom logos.</p>
-        <a href="https://www.fiverr.com" class="apply-btn">Visit Fiverr</a>
+        <button class="fiverr-btn" onclick="window.open('https://www.fiverr.com', '_blank')">Open</button>
     </div>
 
-    <div class="category" onclick="toggleDescription('freelogodesign')">Free Logo Design</div>
-    <div id="freelogodesign" class="description-box">
+    <div class="platform">
+        <h2>Free Logo Design</h2>
         <p>Create free logos with this easy-to-use platform.</p>
-        <a href="https://www.freelogodesign.org" class="apply-btn">Visit Free Logo Design</a>
+        <button class="freelogodesign-btn" onclick="window.open('https://www.freelogodesign.org', '_blank')">Open</button>
     </div>
 
-    <div class="category" onclick="toggleDescription('wix')">Wix Logo Maker</div>
-    <div id="wix" class="description-box">
+    <div class="platform">
+        <h2>Wix Logo Maker</h2>
         <p>Wix provides an AI-powered tool to create unique logos.</p>
-        <a href="https://www.wix.com/logo" class="apply-btn">Visit Wix Logo Maker</a>
+        <button class="wix-btn" onclick="window.open('https://www.wix.com/logo', '_blank')">Open</button>
     </div>
 
-    <div class="category" onclick="toggleDescription('looka')">Looka</div>
-    <div id="looka" class="description-box">
+    <div class="platform">
+        <h2>Looka</h2>
         <p>Looka uses AI to generate stunning logo designs.</p>
-        <a href="https://www.looka.com" class="apply-btn">Visit Looka</a>
+        <button class="looka-btn" onclick="window.open('https://www.looka.com', '_blank')">Open</button>
     </div>
 
-    <div class="category" onclick="toggleDescription('designhill')">Designhill</div>
-    <div id="designhill" class="description-box">
+    <div class="platform">
+        <h2>Designhill</h2>
         <p>Designhill is an AI-powered logo maker with customization options.</p>
-        <a href="https://www.designhill.com/tools/logo-maker" class="apply-btn">Visit Designhill</a>
+        <button class="designhill-btn" onclick="window.open('https://www.designhill.com/tools/logo-maker', '_blank')">Open</button>
     </div>
 
-    <div class="category" onclick="toggleDescription('hatchful')">Hatchful</div>
-    <div id="hatchful" class="description-box">
+    <div class="platform">
+        <h2>Hatchful</h2>
         <p>Hatchful by Shopify helps create business logos easily.</p>
-        <a href="https://www.shopify.com/tools/logo-maker" class="apply-btn">Visit Hatchful</a>
+        <button class="hatchful-btn" onclick="window.open('https://www.shopify.com/tools/logo-maker', '_blank')">Open</button>
     </div>
 
-    <div class="category" onclick="toggleDescription('tailorbrands')">Tailor Brands</div>
-    <div id="tailorbrands" class="description-box">
+    <div class="platform">
+        <h2>Tailor Brands</h2>
         <p>Tailor Brands uses AI to generate high-quality logo designs.</p>
-        <a href="https://www.tailorbrands.com/logo-maker" class="apply-btn">Visit Tailor Brands</a>
+        <button class="tailorbrands-btn" onclick="window.open('https://www.tailorbrands.com/logo-maker', '_blank')">Open</button>
     </div>
 
-    <div class="category" onclick="toggleDescription('brandcrowd')">BrandCrowd</div>
-    <div id="brandcrowd" class="description-box">
+    <div class="platform">
+        <h2>BrandCrowd</h2>
         <p>BrandCrowd offers thousands of customizable logo templates.</p>
-        <a href="https://www.brandcrowd.com" class="apply-btn">Visit BrandCrowd</a>
+        <button class="brandcrowd-btn" onclick="window.open('https://www.brandcrowd.com', '_blank')">Open</button>
     </div>
 
-    <div class="category" onclick="toggleDescription('logomakr')">LogoMakr</div>
-    <div id="logomakr" class="description-box">
+    <div class="platform">
+        <h2>LogoMakr</h2>
         <p>LogoMakr is a free and easy-to-use online logo creator.</p>
-        <a href="https://logomakr.com" class="apply-btn">Visit LogoMakr</a>
+        <button class="logomakr-btn" onclick="window.open('https://logomakr.com', '_blank')">Open</button>
     </div>
 
-    <div class="category" onclick="toggleDescription('logaster')">Logaster</div>
-    <div id="logaster" class="description-box">
+    <div class="platform">
+        <h2>Logaster</h2>
         <p>Logaster helps generate high-quality logos instantly.</p>
-        <a href="https://www.logaster.com" class="apply-btn">Visit Logaster</a>
+        <button class="logaster-btn" onclick="window.open('https://www.logaster.com', '_blank')">Open</button>
     </div>
 
-    <div class="category" onclick="toggleDescription('namecheaplogo')">Namecheap Logo Maker</div>
-    <div id="namecheaplogo" class="description-box">
+    <div class="platform">
+        <h2>Namecheap Logo Maker</h2>
         <p>Namecheap offers a free logo maker for branding needs.</p>
-        <a href="https://www.namecheap.com/logo-maker/" class="apply-btn">Visit Namecheap Logo Maker</a>
+        <button class="namecheaplogo-btn" onclick="window.open('https://www.namecheap.com/logo-maker/', '_blank')">Open</button>
     </div>
 </div>
 
@@ -195,14 +198,7 @@
     <a href="https://youtube.com/@freeonlinetvT1">YouTube Channel</a>
 </div>
 
-<a href="index.html" class="apply-btn">Back to Home</a>
-
-<script>
-    function toggleDescription(id) {
-        let box = document.getElementById(id);
-        box.style.display = box.style.display === "block" ? "none" : "block";
-    }
-</script>
+<a href="index.html" class="canva-btn" style="display: inline-block; padding: 12px 20px; text-decoration: none; color: white; border-radius: 5px;">Back to Home</a>
 
 </body>
 </html>
