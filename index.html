@@ -19,24 +19,34 @@
             color: white;
         }
         section {
-            padding: 50px 20px;
+            padding: 70px 20px;
             border-bottom: 2px solid #ddd;
+            color: white;
         }
         button {
-            padding: 10px 20px;
-            font-size: 16px;
+            padding: 12px 25px;
+            font-size: 18px;
             cursor: pointer;
-            margin: 10px;
+            margin-top: 10px;
             border: none;
             color: white;
+            font-weight: bold;
+            border-radius: 5px;
         }
         .red { background-color: red; }
         .blue { background-color: blue; }
         .green { background-color: green; }
         .purple { background-color: purple; }
         .yellow { background-color: gold; }
-        .black { background-color: black; color: white; }
+        .black { background-color: black; }
         .white { background-color: white; color: black; border: 1px solid black; }
+        .section-bg-1 { background-image: url('https://files.catbox.moe/hqt8ca.jpg'); }
+        .section-bg-2 { background-image: url('https://files.catbox.moe/94c8h9.jpg'); }
+        .section-bg-3 { background-image: url('https://files.catbox.moe/270fec.jpg'); }
+        .overlay {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 50px 20px;
+        }
     </style>
 </head>
 <body>
@@ -46,88 +56,89 @@
         <p>Explore programming, WhatsApp bots, media downloads, and more.</p>
     </header>
 
-    <nav>
-        <button onclick="scrollToSection('about')" class="red">About Me</button>
-        <button onclick="scrollToSection('media')" class="blue">Media Platforms</button>
-        <button onclick="scrollToSection('bots')" class="green">WhatsApp Bots</button>
-        <button onclick="scrollToSection('quiz')" class="purple">Programming Quiz</button>
-        <button onclick="scrollToSection('logo')" class="yellow">Logo Creator Sites</button>
-        <button onclick="scrollToSection('contact')" class="black">Contact Us</button>
-        <button onclick="scrollToSection('puzzle')" class="white">Puzzle Game</button>
-        <button onclick="scrollToSection('rating')" class="red">Rate Website</button>
-        <button onclick="scrollToSection('deployment')" class="blue">Deployment Platforms</button>
-        <button onclick="scrollToSection('chat')" class="green">Live Chat</button>
-    </nav>
-
-    <section id="about">
-        <h2>About Me</h2>
-        <p>Learn about FredieTech, a hub for programming, WhatsApp bots, and tech innovations.</p>
-        <a href="about.html"><button class="red">Read More</button></a>
+    <section id="about" class="section-bg-1">
+        <div class="overlay">
+            <h2>About Me</h2>
+            <p>Learn about FredieTech, a hub for programming, WhatsApp bots, and tech innovations.</p>
+            <a href="about.html"><button class="red">Read More</button></a>
+        </div>
     </section>
 
-    <section id="media">
-        <h2>Media Platforms</h2>
-        <p>Discover top media download platforms for videos, music, and more.</p>
-        <a href="media.html"><button class="blue">Visit Media</button></a>
+    <section id="media" class="section-bg-2">
+        <div class="overlay">
+            <h2>Media Platforms</h2>
+            <p>Discover top media download platforms for videos, music, and more.</p>
+            <a href="media.html"><button class="blue">Visit Media</button></a>
+        </div>
     </section>
 
-    <section id="bots">
-        <h2>WhatsApp Bots</h2>
-        <p>Explore powerful WhatsApp bots for automation and efficiency.</p>
-        <a href="bots.html"><button class="green">Learn More</button></a>
+    <section id="bots" class="section-bg-3">
+        <div class="overlay">
+            <h2>WhatsApp Bots</h2>
+            <p>Explore powerful WhatsApp bots for automation and efficiency.</p>
+            <a href="bots.html"><button class="green">Learn More</button></a>
+        </div>
     </section>
 
-    <section id="quiz">
-        <h2>Programming Quiz</h2>
-        <p>Test your programming knowledge with an interactive quiz.</p>
-        <a href="quiz.html"><button class="purple">Start Quiz</button></a>
+    <section id="quiz" class="section-bg-1">
+        <div class="overlay">
+            <h2>Programming Quiz</h2>
+            <p>Test your programming knowledge with an interactive quiz.</p>
+            <a href="quiz.html"><button class="purple">Start Quiz</button></a>
+        </div>
     </section>
 
-    <section id="logo">
-        <h2>Logo Creator Sites</h2>
-        <p>Find the best platforms to design stunning logos.</p>
-        <a href="logo.html"><button class="yellow">Visit Logo Creators</button></a>
+    <section id="logo" class="section-bg-2">
+        <div class="overlay">
+            <h2>Logo Creator Sites</h2>
+            <p>Find the best platforms to design stunning logos.</p>
+            <a href="logo.html"><button class="yellow">Visit Logo Creators</button></a>
+        </div>
     </section>
 
-    <section id="contact">
-        <h2>Contact Us</h2>
-        <p>Reach out to us on various online platforms.</p>
-        <a href="contact.html"><button class="black">Contact Now</button></a>
+    <section id="contact" class="section-bg-3">
+        <div class="overlay">
+            <h2>Contact Us</h2>
+            <p>Reach out to us on various online platforms.</p>
+            <a href="contact.html"><button class="black">Contact Now</button></a>
+        </div>
     </section>
 
-    <section id="puzzle">
-        <h2>Puzzle Game</h2>
-        <p>Play a fun and challenging puzzle game.</p>
-        <a href="puzzle.html"><button class="white">Play Now</button></a>
+    <section id="puzzle" class="section-bg-1">
+        <div class="overlay">
+            <h2>Puzzle Game</h2>
+            <p>Play a fun and challenging puzzle game.</p>
+            <a href="puzzle.html"><button class="white">Play Now</button></a>
+        </div>
     </section>
 
-    <section id="rating">
-        <h2>Rate Our Website</h2>
-        <p>Give us feedback and rate the FredieTech website.</p>
-        <a href="rating.html"><button class="red">Rate Now</button></a>
+    <section id="rating" class="section-bg-2">
+        <div class="overlay">
+            <h2>Rate Our Website</h2>
+            <p>Give us feedback and rate the FredieTech website.</p>
+            <a href="rating.html"><button class="red">Rate Now</button></a>
+        </div>
     </section>
 
-    <section id="deployment">
-        <h2>Deployment Platforms</h2>
-        <p>Explore the best platforms for deploying web applications.</p>
-        <a href="deployment.html"><button class="blue">View Platforms</button></a>
+    <section id="deployment" class="section-bg-3">
+        <div class="overlay">
+            <h2>Deployment Platforms</h2>
+            <p>Explore the best platforms for deploying web applications.</p>
+            <a href="deployment.html"><button class="blue">View Platforms</button></a>
+        </div>
     </section>
 
-    <section id="chat">
-        <h2>Live Chat</h2>
-        <p>Join group chats and send direct messages.</p>
-        <a href="chat.html"><button class="green">Start Chatting</button></a>
+    <section id="chat" class="section-bg-1">
+        <div class="overlay">
+            <h2>Live Chat</h2>
+            <p>Join group chats and send direct messages.</p>
+            <a href="chat.html"><button class="green">Start Chatting</button></a>
+        </div>
     </section>
 
     <footer>
         <p>FredieTech &copy; 2025</p>
     </footer>
-
-    <script>
-        function scrollToSection(id) {
-            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-        }
-    </script>
 
 </body>
 </html>
