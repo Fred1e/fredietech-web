@@ -12,68 +12,27 @@
             padding: 0;
             text-align: center;
             scroll-behavior: smooth;
-            background-color: #222;
-            color: white;
         }
 
-        /* Header Section */
+        /* Header with solid color instead of background image */
         header {
-            background: #333;
-            padding: 20px;
+            background-color: #333;
+            padding: 60px 20px;
             color: white;
-            font-size: 22px;
-            font-weight: bold;
+            position: relative;
         }
 
-        /* Top Category */
-        .top-category {
-            background: #444;
-            padding: 15px;
-            font-size: 18px;
-            font-weight: bold;
+        /* Overlay for Better Readability */
+        .header-overlay {
+            padding: 30px;
+            border-radius: 10px;
+            display: inline-block;
         }
 
-        .top-description {
-            font-size: 14px;
-            color: #ccc;
-            margin-top: 5px;
-        }
-
-        /* Audio Player */
-        .audio-player {
-            background: #555;
-            padding: 15px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-        }
-
-        .audio-btn {
-            background: #ff5722;
-            border: none;
-            padding: 15px;
-            font-size: 20px;
-            color: white;
-            cursor: pointer;
-            border-radius: 50%;
-            transition: 0.3s;
-        }
-
-        .audio-btn:hover {
-            background: #e64a19;
-        }
-
-        /* Sections */
         section {
             padding: 70px 20px;
-            border-bottom: 2px solid #555;
+            border-bottom: 2px solid #ddd;
+            color: white;
         }
 
         button {
@@ -82,142 +41,194 @@
             cursor: pointer;
             margin-top: 10px;
             border: none;
+            color: white;
             font-weight: bold;
             border-radius: 5px;
         }
 
-        .red { background-color: red; color: white; }
-        .blue { background-color: blue; color: white; }
-        .green { background-color: green; color: white; }
-        .purple { background-color: purple; color: white; }
-        .yellow { background-color: gold; color: black; }
-        .black { background-color: black; color: white; }
+        .red { background-color: red; }
+        .blue { background-color: blue; }
+        .green { background-color: green; }
+        .purple { background-color: purple; }
+        .yellow { background-color: gold; }
+        .black { background-color: black; }
         .white { background-color: white; color: black; border: 1px solid black; }
 
-        .section-bg-1 { background-color: #333; }
-        .section-bg-2 { background-color: #444; }
-        .section-bg-3 { background-color: #555; }
+        .section-bg-1 { background-image: url('https://files.catbox.moe/hqt8ca.jpg'); }
+        .section-bg-2 { background-image: url('https://files.catbox.moe/94c8h9.jpg'); }
+        .section-bg-3 { background-image: url('https://files.catbox.moe/270fec.jpg'); }
 
-        footer {
-            padding: 20px;
-            background: #333;
+        .overlay {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 50px 20px;
+        }
+
+        /* Audio Player Styling */
+        .audio-player {
+            background: #222;
             color: white;
+            padding: 20px;
+            margin: 30px auto;
+            border-radius: 10px;
+            display: inline-block;
+            width: 90%;
+            max-width: 400px;
+        }
+
+        .audio-controls button {
+            background-color: #444;
+            padding: 10px;
+            margin: 5px;
+            border-radius: 50%;
+            font-size: 16px;
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 8px;
+            background: #555;
+            border-radius: 5px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: #0f0;
+            width: 0%;
+            border-radius: 5px;
+        }
+
+        .time {
+            font-size: 14px;
+            margin-top: 5px;
         }
     </style>
 </head>
 <body>
 
-    <header>FredieTech - Explore Technology, Bots, and More</header>
+    <header>
+        <div class="header-overlay">
+            <h1>Welcome to FredieTech</h1>
+            <p>Explore programming, WhatsApp bots, media downloads, and more.</p>
+        </div>
+    </header>
 
-    <!-- Top Category Section -->
-    <div class="top-category">
-        FredieTech Website
-        <div class="top-description">
-            Discover programming tools, WhatsApp bots, media downloads, and interactive features. 
-            Enjoy AI-powered quizzes, logo creation, a puzzle game, chat features, and more. 
-            Experience an innovative platform built with creativity and efficiency.
+    <!-- Audio Player Section -->
+    <div class="audio-player">
+        <audio id="audio"></audio>
+        <div class="audio-controls">
+            <button onclick="prevTrack()">⏮</button>
+            <button onclick="togglePlayPause()" id="playPauseBtn">▶</button>
+            <button onclick="nextTrack()">⏭</button>
+        </div>
+        <div class="progress-container" onclick="seek(event)">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+        <div class="time">
+            <span id="currentTime">0:00</span> / <span id="totalTime">0:00</span>
         </div>
     </div>
 
-    <!-- Audio Player -->
-    <div class="audio-player">
-        <button class="audio-btn" id="prevBtn">⏮</button>
-        <button class="audio-btn" id="playPauseBtn">▶</button>
-        <button class="audio-btn" id="nextBtn">⏭</button>
-    </div>
-
     <section id="about" class="section-bg-1">
-        <h2>About Me</h2>
-        <p>Learn about FredieTech, a hub for programming, WhatsApp bots, and tech innovations.</p>
-        <a href="about.html"><button class="red">Read More</button></a>
+        <div class="overlay">
+            <h2>About Me</h2>
+            <p>Learn about FredieTech, a hub for programming, WhatsApp bots, and tech innovations.</p>
+            <a href="about.html"><button class="red">Read More</button></a>
+        </div>
     </section>
 
     <section id="media" class="section-bg-2">
-        <h2>Media Platforms</h2>
-        <p>Discover top media download platforms for videos, music, and more.</p>
-        <a href="media.html"><button class="blue">Visit Media</button></a>
+        <div class="overlay">
+            <h2>Media Platforms</h2>
+            <p>Discover top media download platforms for videos, music, and more.</p>
+            <a href="media.html"><button class="blue">Visit Media</button></a>
+        </div>
     </section>
 
-    <section id="bots" class="section-bg-3">
-        <h2>WhatsApp Bots</h2>
-        <p>Explore powerful WhatsApp bots for automation and efficiency.</p>
-        <a href="bots.html"><button class="green">Learn More</button></a>
-    </section>
+    <footer>
+        <p>FredieTech &copy; 2025</p>
+    </footer>
 
-    <section id="quiz" class="section-bg-1">
-        <h2>Programming Quiz</h2>
-        <p>Test your programming knowledge with an interactive quiz.</p>
-        <a href="quiz.html"><button class="purple">Start Quiz</button></a>
-    </section>
-
-    <section id="logo" class="section-bg-2">
-        <h2>Logo Creator Sites</h2>
-        <p>Find the best platforms to design stunning logos.</p>
-        <a href="logo.html"><button class="yellow">Visit Logo Creators</button></a>
-    </section>
-
-    <section id="contact" class="section-bg-3">
-        <h2>Contact Us</h2>
-        <p>Reach out to us on various online platforms.</p>
-        <a href="contact.html"><button class="black">Contact Now</button></a>
-    </section>
-
-    <section id="puzzle" class="section-bg-1">
-        <h2>Puzzle Game</h2>
-        <p>Play a fun and challenging puzzle game.</p>
-        <a href="puzzle.html"><button class="white">Play Now</button></a>
-    </section>
-
-    <footer>FredieTech &copy; 2025</footer>
-
-    <!-- JavaScript for Audio Player -->
     <script>
-        const audioUrls = [
+        const audio = document.getElementById("audio");
+        const playPauseBtn = document.getElementById("playPauseBtn");
+        const progressBar = document.getElementById("progressBar");
+        const currentTimeEl = document.getElementById("currentTime");
+        const totalTimeEl = document.getElementById("totalTime");
+
+        const tracks = [
             'https://files.catbox.moe/hpwsi2.mp3',
             'https://files.catbox.moe/xci982.mp3',
             'https://files.catbox.moe/utbujd.mp3',
             'https://files.catbox.moe/w2j17k.m4a',
             'https://files.catbox.moe/851skv.m4a',
             'https://files.catbox.moe/qnhtbu.m4a',
-            'https://files.catbox.moe/lb0x7w.mp3',
-            'https://files.catbox.moe/efmcxm.mp3',
-            'https://files.catbox.moe/gco5bq.mp3',
-            'https://files.catbox.moe/26oeeh.mp3',
-            'https://files.catbox.moe/a1sh4u.mp3',
-            'https://files.catbox.moe/vuuvwn.m4a',
-            'https://files.catbox.moe/wx8q6h.mp3',
-            'https://files.catbox.moe/uj8fps.m4a',
-            'https://files.catbox.moe/dc88bx.m4a',
-            'https://files.catbox.moe/tn32z0.m4a'
+            'https://files.catbox.moe/lb0x7w.mp3'
         ];
 
-        let currentIndex = 0;
-        const audio = new Audio(audioUrls[currentIndex]);
-        const playPauseBtn = document.getElementById("playPauseBtn");
+        let currentTrackIndex = 0;
 
-        function playAudio() {
+        function loadTrack(index) {
+            audio.src = tracks[index];
+            audio.load();
+            updateTimeDisplay();
+        }
+
+        function togglePlayPause() {
+            if (audio.paused) {
+                audio.play();
+                playPauseBtn.textContent = "⏸";
+            } else {
+                audio.pause();
+                playPauseBtn.textContent = "▶";
+            }
+        }
+
+        function nextTrack() {
+            currentTrackIndex = (currentTrackIndex + 1) % tracks.length;
+            loadTrack(currentTrackIndex);
             audio.play();
             playPauseBtn.textContent = "⏸";
         }
 
-        function pauseAudio() {
-            audio.pause();
-            playPauseBtn.textContent = "▶";
+        function prevTrack() {
+            currentTrackIndex = (currentTrackIndex - 1 + tracks.length) % tracks.length;
+            loadTrack(currentTrackIndex);
+            audio.play();
+            playPauseBtn.textContent = "⏸";
         }
 
-        playPauseBtn.onclick = () => (audio.paused ? playAudio() : pauseAudio());
+        function updateTimeDisplay() {
+            audio.addEventListener("timeupdate", () => {
+                let currentTime = audio.currentTime;
+                let duration = audio.duration;
 
-        document.getElementById("nextBtn").onclick = () => {
-            currentIndex = (currentIndex + 1) % audioUrls.length;
-            audio.src = audioUrls[currentIndex];
-            playAudio();
-        };
+                currentTimeEl.textContent = formatTime(currentTime);
+                totalTimeEl.textContent = formatTime(duration);
 
-        document.getElementById("prevBtn").onclick = () => {
-            currentIndex = (currentIndex - 1 + audioUrls.length) % audioUrls.length;
-            audio.src = audioUrls[currentIndex];
-            playAudio();
-        };
+                let progressPercent = (currentTime / duration) * 100;
+                progressBar.style.width = progressPercent + "%";
+            });
+        }
+
+        function seek(event) {
+            const progressContainer = event.currentTarget;
+            const clickX = event.offsetX;
+            const width = progressContainer.clientWidth;
+            const duration = audio.duration;
+
+            audio.currentTime = (clickX / width) * duration;
+        }
+
+        function formatTime(seconds) {
+            const minutes = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
+        }
+
+        audio.addEventListener("ended", nextTrack);
+        loadTrack(currentTrackIndex);
     </script>
 
 </body>
