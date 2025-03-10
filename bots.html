@@ -24,6 +24,9 @@
             font-size: 36px;
             font-weight: bold;
         }
+        h2 {
+            text-decoration: underline;
+        }
         .category {
             padding: 20px;
             margin: 20px auto;
@@ -40,6 +43,7 @@
         .white { background-color: white; color: black; }
         p {
             font-size: 16px;
+            text-align: left;
         }
         pre {
             background-color: rgba(0, 0, 0, 0.8);
@@ -63,13 +67,56 @@
 
     <header>
         <h1>WhatsApp Bots & Programming</h1>
+        <p>Learn about WhatsApp bots and different programming languages used to create automation, chatbots, and AI-powered solutions.</p>
     </header>
 
     <div class="category red">
         <h2>WhatsApp Bots</h2>
-        <p>WhatsApp bots are automated systems that interact with users over WhatsApp. They are used in customer service, 
-            marketing, business automation, and more...</p>
-        <p>(500+ word description of WhatsApp bots: benefits, languages used, implementation, etc.)</p>
+        <p>
+            WhatsApp bots are automated chat programs that interact with users on WhatsApp. They are widely used for customer support, 
+            marketing, e-commerce, and personal assistant tasks. These bots function using AI, predefined commands, or rule-based logic.
+        </p>
+        <h3>Benefits of WhatsApp Bots</h3>
+        <ul>
+            <li><strong>24/7 Customer Support:</strong> Respond to queries any time of the day.</li>
+            <li><strong>Business Automation:</strong> Automate bookings, FAQs, and order tracking.</li>
+            <li><strong>Marketing & Sales:</strong> Send promotional messages and collect leads.</li>
+            <li><strong>AI-Powered Assistance:</strong> Use machine learning to enhance responses.</li>
+        </ul>
+
+        <h3>Programming Languages Used</h3>
+        <p>WhatsApp bots can be created using different languages, including:</p>
+        <ul>
+            <li><strong>JavaScript (Node.js):</strong> Popular for creating bots using WhatsApp Web APIs.</li>
+            <li><strong>Python:</strong> Used with libraries like Twilio, Flask, and Selenium.</li>
+            <li><strong>PHP:</strong> Used for WhatsApp business integration.</li>
+        </ul>
+
+        <h3>How to Set Up a WhatsApp Bot</h3>
+        <ol>
+            <li>Register for a WhatsApp Business API account.</li>
+            <li>Choose a programming language and set up the bot framework.</li>
+            <li>Integrate a message-handling system.</li>
+            <li>Deploy the bot on a cloud server.</li>
+        </ol>
+
+        <h3>Security & Privacy</h3>
+        <p>
+            WhatsApp bots should comply with security protocols to protect user data. End-to-end encryption and GDPR compliance 
+            are necessary for safe communication.
+        </p>
+
+        <h3>Example: Creating a Simple WhatsApp Bot (Node.js)</h3>
+        <pre>
+            const { Client } = require('whatsapp-web.js');
+            const qrcode = require('qrcode-terminal');
+
+            const client = new Client();
+            client.on('qr', qr => { qrcode.generate(qr, { small: true }); });
+            client.on('ready', () => { console.log('Bot is ready!'); });
+            client.on('message', msg => { if (msg.body === 'hi') msg.reply('Hello! How can I help?'); });
+            client.initialize();
+        </pre>
     </div>
 
     <div class="category blue">
@@ -134,7 +181,11 @@
         <a href="https://youtube.com/@freeonlinetvT1"><i class="fab fa-youtube"></i> YouTube</a>
     </div>
 
-    <a href="index.html"><button style="padding: 10px; background-color: #ff6347; color: white; font-size: 16px; border: none; border-radius: 5px;">Back to Home</button></a>
+    <a href="index.html">
+        <button style="padding: 10px; background-color: #ff6347; color: white; font-size: 16px; border: none; border-radius: 5px;">
+            Back to Home
+        </button>
+    </a>
 
 </body>
 </html>
