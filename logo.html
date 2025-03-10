@@ -11,26 +11,25 @@
             margin: 0;
             padding: 0;
             text-align: center;
-            background-color: #000;
+            background-color: #111;
             color: white;
         }
 
         header {
-            background-image: url('https://files.catbox.moe/94c8h9.jpg');
+            background-color: #222;
             padding: 30px;
             color: white;
         }
 
         h1 {
-            font-size: 36px;
+            font-size: 32px;
             font-weight: bold;
-            text-shadow: 0px 0px 10px yellow;
         }
 
         .description {
             font-size: 18px;
             margin: 15px;
-            color: cyan;
+            color: lightgray;
         }
 
         .platform-container {
@@ -40,28 +39,31 @@
         }
 
         .category {
-            background: linear-gradient(45deg, #ff0000, #ffcc00, #00ff00, #0099ff);
+            background: #333;
             color: white;
-            padding: 10px;
+            padding: 15px;
             border-radius: 5px;
             cursor: pointer;
             font-weight: bold;
             text-align: center;
             margin: 10px 0;
-            box-shadow: 0px 0px 10px white;
+            width: 100%;
+            display: block;
+            border: 1px solid #555;
         }
 
         .category:hover {
-            box-shadow: 0px 0px 15px cyan;
+            background: #444;
         }
 
         .description-box {
             display: none;
-            background: #111;
-            padding: 10px;
+            background: #222;
+            padding: 15px;
             margin-top: 5px;
             border-radius: 5px;
             color: white;
+            border: 1px solid #333;
         }
 
         .logo-sample {
@@ -69,7 +71,6 @@
             height: auto;
             margin-top: 10px;
             border-radius: 5px;
-            box-shadow: 0px 0px 10px white;
         }
 
         a {
@@ -78,7 +79,7 @@
             color: white;
             font-weight: bold;
             text-decoration: none;
-            background: blue;
+            background: #0066cc;
             border-radius: 5px;
             margin-top: 10px;
             width: 80%;
@@ -87,7 +88,7 @@
         }
 
         a:hover {
-            background: red;
+            background: #004b99;
         }
 
         .support-links {
@@ -97,7 +98,9 @@
         .support-links a {
             display: inline-block;
             margin: 5px;
-            background: green;
+            background: #008000;
+            padding: 10px;
+            border-radius: 5px;
         }
     </style>
 </head>
@@ -108,71 +111,43 @@
     </header>
 
     <p class="description">
-        Explore the best platforms for creating professional logos. Click each category to learn more!
+        Discover the best platforms for creating professional logos.
     </p>
 
     <div class="platform-container">
         <div class="category" onclick="toggleDescription('canva')">Canva</div>
         <div id="canva" class="description-box">
-            <p>Canva is a free online design tool with thousands of logo templates.</p>
-            <img src="https://logo.com/image/canva-logo-example.png" alt="Canva Logo Sample" class="logo-sample">
+            <p>Canva is a free design tool with thousands of logo templates.</p>
+            <img src="https://via.placeholder.com/200" alt="Canva Logo Sample" class="logo-sample">
             <a href="https://www.canva.com">Visit Canva</a>
         </div>
 
         <div class="category" onclick="toggleDescription('fiverr')">Fiverr</div>
         <div id="fiverr" class="description-box">
             <p>Fiverr allows you to hire professional designers for custom logos.</p>
-            <img src="https://logo.com/image/fiverr-logo-example.png" alt="Fiverr Logo Sample" class="logo-sample">
+            <img src="https://via.placeholder.com/200" alt="Fiverr Logo Sample" class="logo-sample">
             <a href="https://www.fiverr.com">Visit Fiverr</a>
         </div>
 
         <div class="category" onclick="toggleDescription('freelogodesign')">Free Logo Design</div>
         <div id="freelogodesign" class="description-box">
             <p>Create free logos with this easy-to-use platform.</p>
-            <img src="https://logo.com/image/freelogodesign-logo-example.png" alt="Free Logo Design Sample" class="logo-sample">
+            <img src="https://via.placeholder.com/200" alt="Free Logo Design Sample" class="logo-sample">
             <a href="https://www.freelogodesign.org">Visit Free Logo Design</a>
         </div>
 
         <div class="category" onclick="toggleDescription('wix')">Wix Logo Maker</div>
         <div id="wix" class="description-box">
             <p>Wix provides an AI-powered tool to create unique logos.</p>
-            <img src="https://logo.com/image/wix-logo-example.png" alt="Wix Logo Sample" class="logo-sample">
+            <img src="https://via.placeholder.com/200" alt="Wix Logo Sample" class="logo-sample">
             <a href="https://www.wix.com/logo">Visit Wix Logo Maker</a>
-        </div>
-
-        <div class="category" onclick="toggleDescription('tailorbrands')">Tailor Brands</div>
-        <div id="tailorbrands" class="description-box">
-            <p>Tailor Brands offers AI-generated logos with full customization.</p>
-            <img src="https://logo.com/image/tailorbrands-logo-example.png" alt="Tailor Brands Logo Sample" class="logo-sample">
-            <a href="https://www.tailorbrands.com">Visit Tailor Brands</a>
         </div>
 
         <div class="category" onclick="toggleDescription('looka')">Looka</div>
         <div id="looka" class="description-box">
             <p>Looka uses AI to generate stunning logo designs.</p>
-            <img src="https://logo.com/image/looka-logo-example.png" alt="Looka Logo Sample" class="logo-sample">
+            <img src="https://via.placeholder.com/200" alt="Looka Logo Sample" class="logo-sample">
             <a href="https://www.looka.com">Visit Looka</a>
-        </div>
-
-        <div class="category" onclick="toggleDescription('brandcrowd')">BrandCrowd</div>
-        <div id="brandcrowd" class="description-box">
-            <p>BrandCrowd offers ready-made logos and customization tools.</p>
-            <img src="https://logo.com/image/brandcrowd-logo-example.png" alt="BrandCrowd Logo Sample" class="logo-sample">
-            <a href="https://www.brandcrowd.com">Visit BrandCrowd</a>
-        </div>
-
-        <div class="category" onclick="toggleDescription('designhill')">Designhill</div>
-        <div id="designhill" class="description-box">
-            <p>Get professional logo designs through contests or AI tools.</p>
-            <img src="https://logo.com/image/designhill-logo-example.png" alt="Designhill Logo Sample" class="logo-sample">
-            <a href="https://www.designhill.com">Visit Designhill</a>
-        </div>
-
-        <div class="category" onclick="toggleDescription('logomakr')">LogoMakr</div>
-        <div id="logomakr" class="description-box">
-            <p>A simple, free logo maker for beginners.</p>
-            <img src="https://logo.com/image/logomakr-logo-example.png" alt="LogoMakr Logo Sample" class="logo-sample">
-            <a href="https://logomakr.com">Visit LogoMakr</a>
         </div>
     </div>
 
