@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programming Quiz & AI Help</title>
+    <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+    <header style="background-image: url('https://files.catbox.moe/aad6wc.jpg');">
+        <h1>Programming Quiz & AI Assistance</h1>
+    </header>
+
+    <section>
+        <h2>Take a Quick Quiz</h2>
+        <p>Answer the following question:</p>
+        <p>Which programming language is primarily used for web development?</p>
+        <button onclick="checkAnswer('Python')">Python</button>
+        <button onclick="checkAnswer('Java')">Java</button>
+        <button onclick="checkAnswer('JavaScript')">JavaScript</button>
+        <button onclick="checkAnswer('C++')">C++</button>
+        <p id="quiz-result"></p>
+    </section>
+
+    <section>
+        <h2>Ask AI for Programming Help</h2>
+        <input type="text" id="ai-question" placeholder="Ask about programming...">
+        <button onclick="askAI()">Get Answer</button>
+        <p id="ai-response"></p>
+    </section>
+
+    <script>
+        function checkAnswer(answer) {
+            if (answer === "JavaScript") {
+                document.getElementById("quiz-result").innerText = "Correct! JavaScript is mainly used for web development.";
+            } else {
+                document.getElementById("quiz-result").innerText = "Incorrect! Try again.";
+            }
+        }
+
+        function askAI() {
+            let question = document.getElementById("ai-question").value;
+            if (question.trim() !== "") {
+                document.getElementById("ai-response").innerText = "AI: This feature is coming soon!";
+            } else {
+                document.getElementById("ai-response").innerText = "Please enter a question.";
+            }
+        }
+    </script>
+
+    <a href="index.html">Back to Home</a>
+</body>
+</html>
