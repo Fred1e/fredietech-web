@@ -5,20 +5,188 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Logo Creator Platforms</title>
     <link rel="stylesheet" href="assets/styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-color: #000;
+            color: white;
+        }
+
+        header {
+            background-image: url('https://files.catbox.moe/94c8h9.jpg');
+            padding: 30px;
+            color: white;
+        }
+
+        h1 {
+            font-size: 36px;
+            font-weight: bold;
+            text-shadow: 0px 0px 10px yellow;
+        }
+
+        .description {
+            font-size: 18px;
+            margin: 15px;
+            color: cyan;
+        }
+
+        .platform-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 10px;
+        }
+
+        .category {
+            background: linear-gradient(45deg, #ff0000, #ffcc00, #00ff00, #0099ff);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            text-align: center;
+            margin: 10px 0;
+            box-shadow: 0px 0px 10px white;
+        }
+
+        .category:hover {
+            box-shadow: 0px 0px 15px cyan;
+        }
+
+        .description-box {
+            display: none;
+            background: #111;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            color: white;
+        }
+
+        a {
+            display: block;
+            padding: 10px;
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+            background: blue;
+            border-radius: 5px;
+            margin-top: 10px;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        a:hover {
+            background: red;
+        }
+
+        .support-links {
+            margin-top: 20px;
+        }
+
+        .support-links a {
+            display: inline-block;
+            margin: 5px;
+            background: green;
+        }
+    </style>
 </head>
 <body>
-    <header style="background-image: url('https://files.catbox.moe/94c8h9.jpg');">
+
+    <header>
         <h1>Top Logo Creator Websites</h1>
     </header>
 
-    <ul>
-        <li><a href="https://www.canva.com">Canva</a></li>
-        <li><a href="https://www.fiverr.com">Fiverr</a></li>
-        <li><a href="https://www.freelogodesign.org">Free Logo Design</a></li>
-        <li><a href="https://www.wix.com/logo">Wix Logo Maker</a></li>
-        <li><a href="https://www.tailorbrands.com">Tailor Brands</a></li>
-    </ul>
+    <p class="description">
+        Explore the best platforms for creating professional logos. Click each category to learn more!
+    </p>
+
+    <div class="platform-container">
+        <div class="category" onclick="toggleDescription('canva')">Canva</div>
+        <div id="canva" class="description-box">
+            <p>Canva is a free online design tool with thousands of logo templates.</p>
+            <a href="https://www.canva.com">Visit Canva</a>
+        </div>
+
+        <div class="category" onclick="toggleDescription('fiverr')">Fiverr</div>
+        <div id="fiverr" class="description-box">
+            <p>Fiverr allows you to hire professional designers for custom logos.</p>
+            <a href="https://www.fiverr.com">Visit Fiverr</a>
+        </div>
+
+        <div class="category" onclick="toggleDescription('freelogodesign')">Free Logo Design</div>
+        <div id="freelogodesign" class="description-box">
+            <p>Create free logos with this easy-to-use platform.</p>
+            <a href="https://www.freelogodesign.org">Visit Free Logo Design</a>
+        </div>
+
+        <div class="category" onclick="toggleDescription('wix')">Wix Logo Maker</div>
+        <div id="wix" class="description-box">
+            <p>Wix provides an AI-powered tool to create unique logos.</p>
+            <a href="https://www.wix.com/logo">Visit Wix Logo Maker</a>
+        </div>
+
+        <div class="category" onclick="toggleDescription('tailorbrands')">Tailor Brands</div>
+        <div id="tailorbrands" class="description-box">
+            <p>Tailor Brands offers AI-generated logos with full customization.</p>
+            <a href="https://www.tailorbrands.com">Visit Tailor Brands</a>
+        </div>
+
+        <div class="category" onclick="toggleDescription('looka')">Looka</div>
+        <div id="looka" class="description-box">
+            <p>Looka uses AI to generate stunning logo designs.</p>
+            <a href="https://www.looka.com">Visit Looka</a>
+        </div>
+
+        <div class="category" onclick="toggleDescription('brandcrowd')">BrandCrowd</div>
+        <div id="brandcrowd" class="description-box">
+            <p>BrandCrowd offers ready-made logos and customization tools.</p>
+            <a href="https://www.brandcrowd.com">Visit BrandCrowd</a>
+        </div>
+
+        <div class="category" onclick="toggleDescription('designhill')">Designhill</div>
+        <div id="designhill" class="description-box">
+            <p>Get professional logo designs through contests or AI tools.</p>
+            <a href="https://www.designhill.com">Visit Designhill</a>
+        </div>
+
+        <div class="category" onclick="toggleDescription('logomakr')">LogoMakr</div>
+        <div id="logomakr" class="description-box">
+            <p>A simple, free logo maker for beginners.</p>
+            <a href="https://logomakr.com">Visit LogoMakr</a>
+        </div>
+
+        <div class="category" onclick="toggleDescription('hatchful')">Hatchful by Shopify</div>
+        <div id="hatchful" class="description-box">
+            <p>Shopify’s free tool for creating business logos.</p>
+            <a href="https://www.shopify.com/tools/logo-maker">Visit Hatchful</a>
+        </div>
+
+        <div class="category" onclick="toggleDescription('designmantic')">DesignMantic</div>
+        <div id="designmantic" class="description-box">
+            <p>Professional logo maker with vector downloads.</p>
+            <a href="https://www.designmantic.com">Visit DesignMantic</a>
+        </div>
+    </div>
+
+    <h2>Support My Platforms</h2>
+    <div class="support-links">
+        <a href="https://github.com/Fred1e">GitHub</a>
+        <a href="https://github.com/Fred1e/lucky_md">WhatsApp Bot Repo</a>
+        <a href="https://whatsapp.com/channel/0029VaihcQv84Om8LP59fO3f">WhatsApp Channel</a>
+        <a href="https://youtube.com/@freeonlinetvT1">YouTube Channel</a>
+    </div>
 
     <a href="index.html">Back to Home</a>
+
+    <script>
+        function toggleDescription(id) {
+            let box = document.getElementById(id);
+            box.style.display = box.style.display === "block" ? "none" : "block";
+        }
+    </script>
+
 </body>
 </html>
