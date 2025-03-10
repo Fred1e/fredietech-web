@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>FredieTech - Programming & Development</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #ff6600;
+            padding: 20px;
+            text-align: center;
+            color: white;
+            font-size: 1.5em;
+        }
+        section {
+            padding: 20px;
+            margin: 10px;
+        }
+        .category {
+            padding: 15px;
+            margin: 10px 0;
+            background-color: #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        .category:hover {
+            background-color: #bbb;
+        }
+        .category button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        .category button:hover {
+            background-color: #45a049;
+        }
+        .content {
+            display: none;
+            margin-top: 15px;
+        }
+        .content.open {
+            display: block;
+        }
+        footer {
+            background-color: #ff6600;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .btn {
+            padding: 10px;
+            margin: 5px;
+            cursor: pointer;
+            border: none;
+            color: white;
+        }
+        .btn-blue { background-color: blue; }
+        .btn-green { background-color: green; }
+        .btn-red { background-color: red; }
+        .btn-yellow { background-color: yellow; color: black; }
+        .btn-purple { background-color: purple; }
+        .btn-black { background-color: black; }
+        .btn-white { background-color: white; color: black; }
+    </style>
+</head>
+<body>
+
+<header>
+    FredieTech Programming & Development Website
+</header>
+
+<section>
+    <div class="category">
+        <button onclick="toggleContent('aboutMe')">About Me</button>
+        <div id="aboutMe" class="content">
+            <p>FredieTech is passionate about programming and developing applications, focusing on creating user-friendly solutions. I have been developing for several years and specialize in various technologies, including website development, chatbot creation, and more...</p>
+            <p>More about FredieTech and my work, projects, and goals.</p>
+            <p>My journey in programming started with a passion for building things. Over the years, I've mastered different languages, including JavaScript, Python, and more...</p>
+        </div>
+    </div>
+
+    <div class="category">
+        <button onclick="toggleContent('mediaPlatforms')">Media Platforms</button>
+        <div id="mediaPlatforms" class="content">
+            <ul>
+                <li><a href="https://www.spotify.com" target="_blank">Spotify</a></li>
+                <li><a href="https://www.youtube.com" target="_blank">YouTube</a></li>
+                <li><a href="https://soundcloud.com" target="_blank">SoundCloud</a></li>
+                <li><a href="https://www.instagram.com" target="_blank">Instagram</a></li>
+                <li><a href="https://www.twitch.tv" target="_blank">Twitch</a></li>
+                <li><a href="https://www.pinterest.com" target="_blank">Pinterest</a></li>
+                <li><a href="https://www.reddit.com" target="_blank">Reddit</a></li>
+                <li><a href="https://www.behance.net" target="_blank">Behance</a></li>
+                <li><a href="https://www.linkedin.com" target="_blank">LinkedIn</a></li>
+                <li><a href="https://www.facebook.com" target="_blank">Facebook</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="category">
+        <button onclick="toggleContent('whatsappBots')">WhatsApp Bots & Programming</button>
+        <div id="whatsappBots" class="content">
+            <p>WhatsApp bots are incredibly useful for automating messages and creating interactive communication channels. In programming, WhatsApp bots are made using frameworks like Node.js, Python, or Java...</p>
+            <p>These bots can help businesses connect with their clients directly through WhatsApp. They can automate responses, send updates, and more...</p>
+        </div>
+    </div>
+
+    <div class="category">
+        <button onclick="toggleContent('quizHelp')">Programming Quiz Help</button>
+        <div id="quizHelp" class="content">
+            <p>Looking for help with programming? Ask me questions about any language—JavaScript, Python, Ruby, and many more. I'll guide you through any issues you're facing, helping you become a better developer...</p>
+            <p>If you have a specific programming language you'd like to learn more about, feel free to ask about it here...</p>
+        </div>
+    </div>
+
+    <div class="category">
+        <button onclick="toggleContent('logoCreator')">Top Logo Creator Websites</button>
+        <div id="logoCreator" class="content">
+            <ul>
+                <li><a href="https://www.canva.com" target="_blank">Canva</a></li>
+                <li><a href="https://www.hatchwise.com" target="_blank">Hatchwise</a></li>
+                <li><a href="https://www.fiverr.com" target="_blank">Fiverr</a></li>
+                <li><a href="https://www.99designs.com" target="_blank">99Designs</a></li>
+                <li><a href="https://www.logojoy.com" target="_blank">LogoJoy</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="category">
+        <button onclick="toggleContent('chatPlatform')">Chat & Contact</button>
+        <div id="chatPlatform" class="content">
+            <ul>
+                <li><a href="https://www.facebook.com" target="_blank">Facebook</a></li>
+                <li><a href="https://wa.me/" target="_blank">WhatsApp</a></li>
+                <li><a href="https://www.telegram.org" target="_blank">Telegram</a></li>
+                <li><a href="https://discord.com" target="_blank">Discord</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="category">
+        <button onclick="toggleContent('puzzleGame')">Puzzle Game</button>
+        <div id="puzzleGame" class="content">
+            <p>Enjoy a fun puzzle game! Challenge your mind and improve problem-solving skills. Click here to play.</p>
+        </div>
+    </div>
+
+    <div class="category">
+        <button onclick="toggleContent('rateWebsite')">Rate the Website</button>
+        <div id="rateWebsite" class="content">
+            <p>Rate our website! Your feedback helps us improve. Give us a star rating below:</p>
+            <input type="button" value="★" class="btn btn-blue">
+            <input type="button" value="★" class="btn btn-green">
+            <input type="button" value="★" class="btn btn-red">
+        </div>
+    </div>
+
+    <div class="category">
+        <button onclick="toggleContent('deploymentPlatforms')">Deployment Platforms</button>
+        <div id="deploymentPlatforms" class="content">
+            <ul>
+                <li><a href="https://www.heroku.com" target="_blank">Heroku</a></li>
+                <li><a href="https://www.digitalocean.com" target="_blank">DigitalOcean</a></li>
+                <li><a href="https://www.aws.amazon.com" target="_blank">AWS</a></li>
+                <li><a href="https://www.google.com/cloud" target="_blank">Google Cloud</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="category">
+        <button onclick="toggleContent('createGroup')">Create Chat Group</button>
+        <div id="createGroup" class="content">
+            <p>Create a group to chat with your friends! Sign up or log in to start chatting...</p>
+            <button class="btn btn-yellow">Sign Up</button>
+            <button class="btn btn-black">Login</button>
+        </div>
+    </div>
+
+</section>
+
+<footer>
+    <p>FredieTech © 2025 | Visit us on <a href="https://www.facebook.com">Facebook</a></p>
+</footer>
+
+<script>
+    function toggleContent(id) {
+        var content = document.getElementById(id);
+        content.classList.toggle("open");
+    }
+</script>
+
+</body>
+</html>
