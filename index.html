@@ -13,16 +13,29 @@
             text-align: center;
             scroll-behavior: smooth;
         }
+        
+        /* Tanzania Flag Colors on Top */
+        .tanzania-flag {
+            display: flex;
+            height: 50px;
+        }
+        .green { background-color: #17B636; flex: 1; }
+        .yellow { background-color: #FFD700; flex: 0.2; }
+        .black { background-color: #000000; flex: 0.6; }
+        .blue { background-color: #1E90FF; flex: 1; }
+
         header {
             background-image: url('https://files.catbox.moe/aad6wc.jpg');
             padding: 40px;
             color: white;
         }
+
         section {
             padding: 70px 20px;
             border-bottom: 2px solid #ddd;
             color: white;
         }
+
         button {
             padding: 12px 25px;
             font-size: 18px;
@@ -33,6 +46,7 @@
             font-weight: bold;
             border-radius: 5px;
         }
+
         .red { background-color: red; }
         .blue { background-color: blue; }
         .green { background-color: green; }
@@ -40,9 +54,11 @@
         .yellow { background-color: gold; }
         .black { background-color: black; }
         .white { background-color: white; color: black; border: 1px solid black; }
+
         .section-bg-1 { background-image: url('https://files.catbox.moe/hqt8ca.jpg'); }
         .section-bg-2 { background-image: url('https://files.catbox.moe/94c8h9.jpg'); }
         .section-bg-3 { background-image: url('https://files.catbox.moe/270fec.jpg'); }
+
         .overlay {
             background: rgba(0, 0, 0, 0.6);
             padding: 50px 20px;
@@ -50,6 +66,15 @@
     </style>
 </head>
 <body>
+
+    <!-- Tanzania Flag Colors on Top -->
+    <div class="tanzania-flag">
+        <div class="green"></div>
+        <div class="yellow"></div>
+        <div class="black"></div>
+        <div class="yellow"></div>
+        <div class="blue"></div>
+    </div>
 
     <header>
         <h1>Welcome to FredieTech</h1>
