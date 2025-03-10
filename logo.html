@@ -66,29 +66,22 @@
             border: 1px solid #333;
         }
 
-        .logo-sample {
-            width: 200px;
-            height: auto;
+        .apply-btn {
+            display: inline-block;
+            padding: 12px 20px;
             margin-top: 10px;
-            border-radius: 5px;
-        }
-
-        a {
-            display: block;
-            padding: 10px;
-            color: white;
+            font-size: 16px;
             font-weight: bold;
             text-decoration: none;
-            background: #0066cc;
+            color: white;
+            background: linear-gradient(45deg, #ff9800, #ff5722);
             border-radius: 5px;
-            margin-top: 10px;
+            transition: background 0.3s ease-in-out;
             width: 80%;
-            margin-left: auto;
-            margin-right: auto;
         }
 
-        a:hover {
-            background: #004b99;
+        .apply-btn:hover {
+            background: linear-gradient(45deg, #ff5722, #e64a19);
         }
 
         .support-links {
@@ -101,72 +94,115 @@
             background: #008000;
             padding: 10px;
             border-radius: 5px;
+            text-decoration: none;
+            color: white;
+        }
+
+        .support-links a:hover {
+            background: #006600;
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Top Logo Creator Websites</h1>
-    </header>
+<header>
+    <h1>Top Logo Creator Websites</h1>
+</header>
 
-    <p class="description">
-        Discover the best platforms for creating professional logos.
-    </p>
+<p class="description">
+    Discover the best platforms for creating professional logos.
+</p>
 
-    <div class="platform-container">
-        <div class="category" onclick="toggleDescription('canva')">Canva</div>
-        <div id="canva" class="description-box">
-            <p>Canva is a free design tool with thousands of logo templates.</p>
-            <img src="https://via.placeholder.com/200" alt="Canva Logo Sample" class="logo-sample">
-            <a href="https://www.canva.com">Visit Canva</a>
-        </div>
-
-        <div class="category" onclick="toggleDescription('fiverr')">Fiverr</div>
-        <div id="fiverr" class="description-box">
-            <p>Fiverr allows you to hire professional designers for custom logos.</p>
-            <img src="https://via.placeholder.com/200" alt="Fiverr Logo Sample" class="logo-sample">
-            <a href="https://www.fiverr.com">Visit Fiverr</a>
-        </div>
-
-        <div class="category" onclick="toggleDescription('freelogodesign')">Free Logo Design</div>
-        <div id="freelogodesign" class="description-box">
-            <p>Create free logos with this easy-to-use platform.</p>
-            <img src="https://via.placeholder.com/200" alt="Free Logo Design Sample" class="logo-sample">
-            <a href="https://www.freelogodesign.org">Visit Free Logo Design</a>
-        </div>
-
-        <div class="category" onclick="toggleDescription('wix')">Wix Logo Maker</div>
-        <div id="wix" class="description-box">
-            <p>Wix provides an AI-powered tool to create unique logos.</p>
-            <img src="https://via.placeholder.com/200" alt="Wix Logo Sample" class="logo-sample">
-            <a href="https://www.wix.com/logo">Visit Wix Logo Maker</a>
-        </div>
-
-        <div class="category" onclick="toggleDescription('looka')">Looka</div>
-        <div id="looka" class="description-box">
-            <p>Looka uses AI to generate stunning logo designs.</p>
-            <img src="https://via.placeholder.com/200" alt="Looka Logo Sample" class="logo-sample">
-            <a href="https://www.looka.com">Visit Looka</a>
-        </div>
+<div class="platform-container">
+    <div class="category" onclick="toggleDescription('canva')">Canva</div>
+    <div id="canva" class="description-box">
+        <p>Canva is a free design tool with thousands of logo templates.</p>
+        <a href="https://www.canva.com" class="apply-btn">Visit Canva</a>
     </div>
 
-    <h2>Support My Platforms</h2>
-    <div class="support-links">
-        <a href="https://github.com/Fred1e">GitHub</a>
-        <a href="https://github.com/Fred1e/lucky_md">WhatsApp Bot Repo</a>
-        <a href="https://whatsapp.com/channel/0029VaihcQv84Om8LP59fO3f">WhatsApp Channel</a>
-        <a href="https://youtube.com/@freeonlinetvT1">YouTube Channel</a>
+    <div class="category" onclick="toggleDescription('fiverr')">Fiverr</div>
+    <div id="fiverr" class="description-box">
+        <p>Fiverr allows you to hire professional designers for custom logos.</p>
+        <a href="https://www.fiverr.com" class="apply-btn">Visit Fiverr</a>
     </div>
 
-    <a href="index.html">Back to Home</a>
+    <div class="category" onclick="toggleDescription('freelogodesign')">Free Logo Design</div>
+    <div id="freelogodesign" class="description-box">
+        <p>Create free logos with this easy-to-use platform.</p>
+        <a href="https://www.freelogodesign.org" class="apply-btn">Visit Free Logo Design</a>
+    </div>
 
-    <script>
-        function toggleDescription(id) {
-            let box = document.getElementById(id);
-            box.style.display = box.style.display === "block" ? "none" : "block";
-        }
-    </script>
+    <div class="category" onclick="toggleDescription('wix')">Wix Logo Maker</div>
+    <div id="wix" class="description-box">
+        <p>Wix provides an AI-powered tool to create unique logos.</p>
+        <a href="https://www.wix.com/logo" class="apply-btn">Visit Wix Logo Maker</a>
+    </div>
+
+    <div class="category" onclick="toggleDescription('looka')">Looka</div>
+    <div id="looka" class="description-box">
+        <p>Looka uses AI to generate stunning logo designs.</p>
+        <a href="https://www.looka.com" class="apply-btn">Visit Looka</a>
+    </div>
+
+    <div class="category" onclick="toggleDescription('designhill')">Designhill</div>
+    <div id="designhill" class="description-box">
+        <p>Designhill is an AI-powered logo maker with customization options.</p>
+        <a href="https://www.designhill.com/tools/logo-maker" class="apply-btn">Visit Designhill</a>
+    </div>
+
+    <div class="category" onclick="toggleDescription('hatchful')">Hatchful</div>
+    <div id="hatchful" class="description-box">
+        <p>Hatchful by Shopify helps create business logos easily.</p>
+        <a href="https://www.shopify.com/tools/logo-maker" class="apply-btn">Visit Hatchful</a>
+    </div>
+
+    <div class="category" onclick="toggleDescription('tailorbrands')">Tailor Brands</div>
+    <div id="tailorbrands" class="description-box">
+        <p>Tailor Brands uses AI to generate high-quality logo designs.</p>
+        <a href="https://www.tailorbrands.com/logo-maker" class="apply-btn">Visit Tailor Brands</a>
+    </div>
+
+    <div class="category" onclick="toggleDescription('brandcrowd')">BrandCrowd</div>
+    <div id="brandcrowd" class="description-box">
+        <p>BrandCrowd offers thousands of customizable logo templates.</p>
+        <a href="https://www.brandcrowd.com" class="apply-btn">Visit BrandCrowd</a>
+    </div>
+
+    <div class="category" onclick="toggleDescription('logomakr')">LogoMakr</div>
+    <div id="logomakr" class="description-box">
+        <p>LogoMakr is a free and easy-to-use online logo creator.</p>
+        <a href="https://logomakr.com" class="apply-btn">Visit LogoMakr</a>
+    </div>
+
+    <div class="category" onclick="toggleDescription('logaster')">Logaster</div>
+    <div id="logaster" class="description-box">
+        <p>Logaster helps generate high-quality logos instantly.</p>
+        <a href="https://www.logaster.com" class="apply-btn">Visit Logaster</a>
+    </div>
+
+    <div class="category" onclick="toggleDescription('namecheaplogo')">Namecheap Logo Maker</div>
+    <div id="namecheaplogo" class="description-box">
+        <p>Namecheap offers a free logo maker for branding needs.</p>
+        <a href="https://www.namecheap.com/logo-maker/" class="apply-btn">Visit Namecheap Logo Maker</a>
+    </div>
+</div>
+
+<h2>Support My Platforms</h2>
+<div class="support-links">
+    <a href="https://github.com/Fred1e">GitHub</a>
+    <a href="https://github.com/Fred1e/lucky_md">WhatsApp Bot Repo</a>
+    <a href="https://whatsapp.com/channel/0029VaihcQv84Om8LP59fO3f">WhatsApp Channel</a>
+    <a href="https://youtube.com/@freeonlinetvT1">YouTube Channel</a>
+</div>
+
+<a href="index.html" class="apply-btn">Back to Home</a>
+
+<script>
+    function toggleDescription(id) {
+        let box = document.getElementById(id);
+        box.style.display = box.style.display === "block" ? "none" : "block";
+    }
+</script>
 
 </body>
 </html>
