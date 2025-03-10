@@ -7,106 +7,148 @@
     <link rel="stylesheet" href="assets/styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <style>
+        :root {
+            --background-dark: #121212;
+            --background-light: #f5f5f5;
+            --text-dark: white;
+            --text-light: black;
+            --user-msg-dark: #007BFF;
+            --user-msg-light: #0084ff;
+            --ai-msg-dark: #444;
+            --ai-msg-light: #e0e0e0;
+        }
+
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             text-align: center;
-            background-color: #121212;
-            color: white;
+            background-color: var(--background-dark);
+            color: var(--text-dark);
+            transition: background 0.5s, color 0.5s;
         }
+
         header {
-            background-image: url('https://files.catbox.moe/aad6wc.jpg');
-            padding: 50px;
+            padding: 20px;
+            background-color: var(--user-msg-dark);
             color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        h1 {
-            font-size: 36px;
+
+        .theme-toggle {
+            padding: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background: white;
+            color: black;
             font-weight: bold;
         }
-        .quiz-section, .chat-section {
+
+        .chat-section {
             padding: 20px;
             margin: 20px auto;
             width: 90%;
             max-width: 600px;
             border-radius: 10px;
-            background: #1e1e1e;
+            background: var(--background-dark);
+            transition: background 0.5s;
         }
-        button {
-            padding: 10px;
-            font-size: 16px;
-            cursor: pointer;
-            margin-top: 10px;
-            border: none;
-            color: white;
-            font-weight: bold;
+
+        .chat-box {
+            background: var(--background-dark);
+            padding: 15px;
             border-radius: 5px;
-            background-color: #007BFF;
-            transition: background-color 0.3s ease;
+            max-height: 300px;
+            overflow-y: auto;
+            text-align: left;
+            border: 1px solid var(--ai-msg-dark);
         }
-        button:hover {
-            background-color: #0056b3;
+
+        .message {
+            padding: 10px;
+            margin: 5px;
+            border-radius: 10px;
+            width: fit-content;
+            max-width: 80%;
+            display: block;
+            transition: background 0.5s;
         }
+
+        .user-message {
+            background: var(--user-msg-dark);
+            color: white;
+            margin-left: auto;
+            text-align: right;
+        }
+
+        .ai-message {
+            background: var(--ai-msg-dark);
+            color: white;
+            text-align: left;
+        }
+
+        .message-box {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
         input {
             padding: 10px;
             width: 80%;
             border-radius: 5px;
             border: none;
         }
-        .chat-box {
-            background: #222;
-            padding: 15px;
-            border-radius: 5px;
-            max-height: 300px;
-            overflow-y: auto;
-            text-align: left;
-        }
-        .message {
-            background: #007BFF;
+
+        button {
             padding: 10px;
-            margin: 5px;
+            cursor: pointer;
+            border: none;
             border-radius: 5px;
-            color: white;
-            width: fit-content;
+            font-weight: bold;
+            transition: background 0.3s ease;
         }
-        .ai-message {
-            background: #444;
+
+        .send-btn {
+            background-color: var(--user-msg-dark);
+            color: white;
+        }
+
+        .send-btn:hover {
+            background-color: var(--user-msg-light);
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Programming Quiz & AI Assistance</h1>
+        <h1>Programming AI Chat</h1>
+        <button class="theme-toggle" onclick="toggleTheme()">🌞 Day Mode</button>
     </header>
-
-    <div class="quiz-section">
-        <h2>Take a Quick Quiz</h2>
-        <p>Which programming language is mainly used for web development?</p>
-        <button onclick="checkAnswer('Python')">Python</button>
-        <button onclick="checkAnswer('Java')">Java</button>
-        <button onclick="checkAnswer('JavaScript')">JavaScript</button>
-        <button onclick="checkAnswer('C++')">C++</button>
-        <p id="quiz-result"></p>
-    </div>
 
     <div class="chat-section">
         <h2>Chat with AI</h2>
         <div class="chat-box" id="chat-box">
             <p class="message ai-message">AI: Ask me about WhatsApp bots, programming languages, or coding!</p>
         </div>
-        <input type="text" id="user-input" placeholder="Ask about programming...">
-        <button onclick="sendMessage()">Send</button>
+        <div class="message-box">
+            <input type="text" id="user-input" placeholder="Ask about programming...">
+            <button class="send-btn" onclick="sendMessage()">Send</button>
+        </div>
     </div>
 
     <script>
-        function checkAnswer(answer) {
-            let result = document.getElementById("quiz-result");
-            if (answer === "JavaScript") {
-                result.innerText = "Correct! JavaScript is mainly used for web development.";
-            } else {
-                result.innerText = "Incorrect! Try again.";
-            }
+        let isDarkMode = true;
+
+        function toggleTheme() {
+            isDarkMode = !isDarkMode;
+            document.body.style.backgroundColor = isDarkMode ? "var(--background-dark)" : "var(--background-light)";
+            document.body.style.color = isDarkMode ? "var(--text-dark)" : "var(--text-light)";
+            document.querySelector(".chat-box").style.background = isDarkMode ? "var(--background-dark)" : "var(--background-light)";
+            document.querySelector(".theme-toggle").innerText = isDarkMode ? "🌞 Day Mode" : "🌙 Night Mode";
         }
 
         function sendMessage() {
@@ -115,7 +157,7 @@
             if (message === "") return;
 
             let chatBox = document.getElementById("chat-box");
-            let userMsg = `<p class="message">${message}</p>`;
+            let userMsg = `<p class="message user-message">${message}</p>`;
             chatBox.innerHTML += userMsg;
 
             setTimeout(() => {
@@ -130,16 +172,16 @@
 
         function getAIResponse(message) {
             if (message.includes("whatsapp bot")) {
-                return "WhatsApp bots are automated chat programs used for customer service, marketing, and more. They can be built using JavaScript, Python, or PHP. Example (Node.js):\n```javascript\nconst { Client } = require('whatsapp-web.js');\nconst client = new Client();\nclient.on('qr', qr => console.log(qr));\nclient.on('ready', () => console.log('Bot is ready!'));\nclient.initialize();\n```";
+                return "WhatsApp bots are automated programs for messaging, customer support, and automation. Example (Node.js):\n```javascript\nconst { Client } = require('whatsapp-web.js');\nconst client = new Client();\nclient.on('qr', qr => console.log(qr));\nclient.on('ready', () => console.log('Bot is ready!'));\nclient.initialize();\n```";
             }
             if (message.includes("programming language")) {
-                return "Some popular programming languages are Python, JavaScript, Java, C++, PHP, and Go.";
+                return "Popular programming languages: Python, JavaScript, Java, C++, PHP, and Go.";
             }
             if (message.includes("python")) {
                 return "Python is widely used in AI, web development, and automation. Example:\n```python\nprint('Hello, World!')\n```";
             }
             if (message.includes("javascript")) {
-                return "JavaScript is used for web development and interactive web pages. Example:\n```javascript\nconsole.log('Hello, World!');\n```";
+                return "JavaScript is used for web development. Example:\n```javascript\nconsole.log('Hello, World!');\n```";
             }
             if (message.includes("html")) {
                 return "HTML structures web pages. Example:\n```html\n<!DOCTYPE html>\n<html>\n<head><title>Page</title></head>\n<body><h1>Hello, World!</h1></body>\n</html>\n```";
@@ -148,16 +190,14 @@
                 return "CSS styles web pages. Example:\n```css\nh1 { color: blue; }\n```";
             }
             if (message.includes("java")) {
-                return "Java is a powerful object-oriented language. Example:\n```java\nclass Main { public static void main(String[] args) { System.out.println('Hello, World!'); } }\n```";
+                return "Java is an object-oriented language. Example:\n```java\nclass Main { public static void main(String[] args) { System.out.println('Hello, World!'); } }\n```";
             }
             if (message.includes("php")) {
-                return "PHP is used for web backend development. Example:\n```php\n<?php echo 'Hello, World!'; ?>\n```";
+                return "PHP is used for backend development. Example:\n```php\n<?php echo 'Hello, World!'; ?>\n```";
             }
             return "I'm not sure, but I can help! Try asking about a specific programming language.";
         }
     </script>
-
-    <a href="index.html"><button style="margin-top: 20px; background-color: #ff6347;">Back to Home</button></a>
 
 </body>
 </html>
