@@ -5,49 +5,159 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Programming Quiz & AI Help</title>
     <link rel="stylesheet" href="assets/styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-color: #121212;
+            color: white;
+        }
+        header {
+            background-image: url('https://files.catbox.moe/aad6wc.jpg');
+            padding: 50px;
+            color: white;
+        }
+        h1 {
+            font-size: 36px;
+            font-weight: bold;
+        }
+        .quiz-section, .chat-section {
+            padding: 20px;
+            margin: 20px auto;
+            width: 90%;
+            max-width: 600px;
+            border-radius: 10px;
+            background: #1e1e1e;
+        }
+        button {
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+            border: none;
+            color: white;
+            font-weight: bold;
+            border-radius: 5px;
+            background-color: #007BFF;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        input {
+            padding: 10px;
+            width: 80%;
+            border-radius: 5px;
+            border: none;
+        }
+        .chat-box {
+            background: #222;
+            padding: 15px;
+            border-radius: 5px;
+            max-height: 300px;
+            overflow-y: auto;
+            text-align: left;
+        }
+        .message {
+            background: #007BFF;
+            padding: 10px;
+            margin: 5px;
+            border-radius: 5px;
+            color: white;
+            width: fit-content;
+        }
+        .ai-message {
+            background: #444;
+        }
+    </style>
 </head>
 <body>
-    <header style="background-image: url('https://files.catbox.moe/aad6wc.jpg');">
+
+    <header>
         <h1>Programming Quiz & AI Assistance</h1>
     </header>
 
-    <section>
+    <div class="quiz-section">
         <h2>Take a Quick Quiz</h2>
-        <p>Answer the following question:</p>
-        <p>Which programming language is primarily used for web development?</p>
+        <p>Which programming language is mainly used for web development?</p>
         <button onclick="checkAnswer('Python')">Python</button>
         <button onclick="checkAnswer('Java')">Java</button>
         <button onclick="checkAnswer('JavaScript')">JavaScript</button>
         <button onclick="checkAnswer('C++')">C++</button>
         <p id="quiz-result"></p>
-    </section>
+    </div>
 
-    <section>
-        <h2>Ask AI for Programming Help</h2>
-        <input type="text" id="ai-question" placeholder="Ask about programming...">
-        <button onclick="askAI()">Get Answer</button>
-        <p id="ai-response"></p>
-    </section>
+    <div class="chat-section">
+        <h2>Chat with AI</h2>
+        <div class="chat-box" id="chat-box">
+            <p class="message ai-message">AI: Ask me about WhatsApp bots, programming languages, or coding!</p>
+        </div>
+        <input type="text" id="user-input" placeholder="Ask about programming...">
+        <button onclick="sendMessage()">Send</button>
+    </div>
 
     <script>
         function checkAnswer(answer) {
+            let result = document.getElementById("quiz-result");
             if (answer === "JavaScript") {
-                document.getElementById("quiz-result").innerText = "Correct! JavaScript is mainly used for web development.";
+                result.innerText = "Correct! JavaScript is mainly used for web development.";
             } else {
-                document.getElementById("quiz-result").innerText = "Incorrect! Try again.";
+                result.innerText = "Incorrect! Try again.";
             }
         }
 
-        function askAI() {
-            let question = document.getElementById("ai-question").value;
-            if (question.trim() !== "") {
-                document.getElementById("ai-response").innerText = "AI: This feature is coming soon!";
-            } else {
-                document.getElementById("ai-response").innerText = "Please enter a question.";
+        function sendMessage() {
+            let input = document.getElementById("user-input");
+            let message = input.value.trim();
+            if (message === "") return;
+
+            let chatBox = document.getElementById("chat-box");
+            let userMsg = `<p class="message">${message}</p>`;
+            chatBox.innerHTML += userMsg;
+
+            setTimeout(() => {
+                let aiResponse = getAIResponse(message.toLowerCase());
+                let aiMsg = `<p class="message ai-message">${aiResponse}</p>`;
+                chatBox.innerHTML += aiMsg;
+                chatBox.scrollTop = chatBox.scrollHeight;
+            }, 1000);
+
+            input.value = "";
+        }
+
+        function getAIResponse(message) {
+            if (message.includes("whatsapp bot")) {
+                return "WhatsApp bots are automated chat programs used for customer service, marketing, and more. They can be built using JavaScript, Python, or PHP. Example (Node.js):\n```javascript\nconst { Client } = require('whatsapp-web.js');\nconst client = new Client();\nclient.on('qr', qr => console.log(qr));\nclient.on('ready', () => console.log('Bot is ready!'));\nclient.initialize();\n```";
             }
+            if (message.includes("programming language")) {
+                return "Some popular programming languages are Python, JavaScript, Java, C++, PHP, and Go.";
+            }
+            if (message.includes("python")) {
+                return "Python is widely used in AI, web development, and automation. Example:\n```python\nprint('Hello, World!')\n```";
+            }
+            if (message.includes("javascript")) {
+                return "JavaScript is used for web development and interactive web pages. Example:\n```javascript\nconsole.log('Hello, World!');\n```";
+            }
+            if (message.includes("html")) {
+                return "HTML structures web pages. Example:\n```html\n<!DOCTYPE html>\n<html>\n<head><title>Page</title></head>\n<body><h1>Hello, World!</h1></body>\n</html>\n```";
+            }
+            if (message.includes("css")) {
+                return "CSS styles web pages. Example:\n```css\nh1 { color: blue; }\n```";
+            }
+            if (message.includes("java")) {
+                return "Java is a powerful object-oriented language. Example:\n```java\nclass Main { public static void main(String[] args) { System.out.println('Hello, World!'); } }\n```";
+            }
+            if (message.includes("php")) {
+                return "PHP is used for web backend development. Example:\n```php\n<?php echo 'Hello, World!'; ?>\n```";
+            }
+            return "I'm not sure, but I can help! Try asking about a specific programming language.";
         }
     </script>
 
-    <a href="index.html">Back to Home</a>
+    <a href="index.html"><button style="margin-top: 20px; background-color: #ff6347;">Back to Home</button></a>
+
 </body>
 </html>
