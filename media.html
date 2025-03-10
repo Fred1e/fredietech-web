@@ -5,23 +5,130 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Media Downloads</title>
     <link rel="stylesheet" href="assets/styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-color: #121212;
+            color: white;
+        }
+
+        header {
+            background-image: url('https://files.catbox.moe/hqt8ca.jpg');
+            padding: 50px;
+            color: white;
+        }
+
+        .platform {
+            background: #1e1e1e;
+            padding: 20px;
+            margin: 20px auto;
+            width: 90%;
+            max-width: 600px;
+            border-radius: 10px;
+        }
+
+        button {
+            padding: 12px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+            border: none;
+            color: white;
+            font-weight: bold;
+            border-radius: 5px;
+            background-color: blue;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+        }
+    </style>
 </head>
 <body>
-    <header style="background-image: url('https://files.catbox.moe/hqt8ca.jpg');">
+
+    <header>
         <h1>Media Download Platforms</h1>
     </header>
 
-    <ul>
-        <li><a href="https://www.spotify.com">Spotify</a></li>
-        <li><a href="https://www.youtube.com">YouTube</a></li>
-        <li><a href="https://soundcloud.com">SoundCloud</a></li>
-        <li><a href="https://www.twitch.tv">Twitch</a></li>
-        <li><a href="https://www.pinterest.com">Pinterest</a></li>
-        <li><a href="https://www.twitch.tv" target="_blank">Twitch</a></li>
-        <li><a href="https://www.reddit.com" target="_blank">Reddit</a></li>
-        <li><a href="https://www.behance.net" target="_blank">Behance</a></li>
-    </ul>
+    <section>
+        <div class="platform">
+            <h2>Spotify</h2>
+            <p>Stream and download millions of songs and podcasts.</p>
+            <button onclick="window.open('https://www.spotify.com', '_blank')">Open</button>
+        </div>
 
-    <a href="index.html">Back to Home</a>
+        <div class="platform">
+            <h2>YouTube</h2>
+            <p>Watch, stream, and download videos from all over the world.</p>
+            <button onclick="window.open('https://www.youtube.com', '_blank')">Open</button>
+        </div>
+
+        <div class="platform">
+            <h2>SoundCloud</h2>
+            <p>Discover and download music from independent artists and creators.</p>
+            <button onclick="window.open('https://soundcloud.com', '_blank')">Open</button>
+        </div>
+
+        <div class="platform">
+            <h2>Twitch</h2>
+            <p>Stream and download live gaming and entertainment content.</p>
+            <button onclick="window.open('https://www.twitch.tv', '_blank')">Open</button>
+        </div>
+
+        <div class="platform">
+            <h2>Pinterest</h2>
+            <p>Find and download high-quality images and creative content.</p>
+            <button onclick="window.open('https://www.pinterest.com', '_blank')">Open</button>
+        </div>
+
+        <div class="platform">
+            <h2>Reddit</h2>
+            <p>Explore and download trending videos, memes, and discussions.</p>
+            <button onclick="window.open('https://www.reddit.com', '_blank')">Open</button>
+        </div>
+
+        <div class="platform">
+            <h2>Behance</h2>
+            <p>Download creative works, designs, and professional portfolios.</p>
+            <button onclick="window.open('https://www.behance.net', '_blank')">Open</button>
+        </div>
+
+        <div class="platform">
+            <h2>DeviantArt</h2>
+            <p>Download digital art, illustrations, and creative projects.</p>
+            <button onclick="window.open('https://www.deviantart.com', '_blank')">Open</button>
+        </div>
+
+        <div class="platform">
+            <h2>Mixcloud</h2>
+            <p>Stream and download DJ mixes, radio shows, and music sessions.</p>
+            <button onclick="window.open('https://www.mixcloud.com', '_blank')">Open</button>
+        </div>
+
+        <div class="platform">
+            <h2>Vimeo</h2>
+            <p>Watch and download high-quality professional videos.</p>
+            <button onclick="window.open('https://www.vimeo.com', '_blank')">Open</button>
+        </div>
+
+        <div class="platform">
+            <h2>Bandcamp</h2>
+            <p>Download and purchase music directly from artists.</p>
+            <button onclick="window.open('https://www.bandcamp.com', '_blank')">Open</button>
+        </div>
+
+        <div class="platform">
+            <h2>Apple Music</h2>
+            <p>Stream and download high-quality music albums.</p>
+            <button onclick="window.open('https://music.apple.com', '_blank')">Open</button>
+        </div>
+    </section>
+
+    <a href="index.html"><button>Back to Home</button></a>
+
 </body>
 </html>
