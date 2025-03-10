@@ -24,8 +24,16 @@
 
         section {
             padding: 50px 20px;
-            max-width: 800px;
+            max-width: 900px;
             margin: auto;
+            text-align: left;
+        }
+
+        .category {
+            background: #1e1e1e;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
         }
 
         button {
@@ -40,37 +48,12 @@
             background-color: blue;
         }
 
-        .loading-screen {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: black;
-            justify-content: center;
-            align-items: center;
-            font-size: 50px;
-            font-weight: bold;
-        }
-
-        .fe {
-            animation: colorChange 2s infinite;
-        }
-
-        @keyframes colorChange {
-            0% { color: red; }
-            25% { color: blue; }
-            50% { color: green; }
-            75% { color: yellow; }
-            100% { color: red; }
-        }
-
         .projects {
             margin-top: 50px;
             padding: 30px;
             background: #1e1e1e;
             border-radius: 10px;
+            text-align: center;
         }
 
         .projects a {
@@ -91,19 +74,127 @@
     <section>
         <h2>Who is FredieTech?</h2>
         <p>
-            (Replace this with your **700+ words** describing your programming journey, experience with WhatsApp bots, website development, tech expertise, 
-            and how you contribute to the community.)
+            FredieTech is a **passionate programmer, website developer, and WhatsApp bot creator** dedicated to building 
+            **innovative digital solutions**. With years of experience in **full-stack web development, automation, and bot creation**, 
+            FredieTech has developed numerous **interactive websites**, AI-powered solutions, and feature-rich **WhatsApp bots** that 
+            enhance user experiences and streamline automation tasks.
+        </p>
+        <p>
+            Specializing in **JavaScript, Python, HTML, CSS, Node.js**, and WhatsApp bot frameworks, FredieTech focuses on **error-free, 
+            high-performance coding** that delivers smooth user experiences. Whether it's **creating custom web dashboards, interactive 
+            rating systems, live chat features**, or **automated WhatsApp bots**, every project is built with efficiency, creativity, and 
+            user engagement in mind.
         </p>
     </section>
 
     <section>
-        <h2>Search Mode</h2>
-        <button onclick="startSearch()">Start Search</button>
-    </section>
+        <h2>My Work & Expertise</h2>
+        
+        <div class="category">
+            <h3>1. Website Development</h3>
+            <p>Building **fully responsive, interactive, and modern websites** with clean UI/UX design, fast performance, and advanced 
+            functionality using **HTML, CSS, JavaScript, and frameworks like React and Node.js**.</p>
+        </div>
 
-    <div class="loading-screen" id="loadingScreen">
-        <span class="fe">FE</span>
-    </div>
+        <div class="category">
+            <h3>2. WhatsApp Bot Development</h3>
+            <p>Developing **advanced WhatsApp bots** that perform tasks like media downloading, automation, customer support, AI chat 
+            interactions, and more, using **Baileys, WhatsApp Web APIs, and Node.js**.</p>
+        </div>
+
+        <div class="category">
+            <h3>3. AI-Powered Chatbots</h3>
+            <p>Integrating **AI-powered chatbots** to provide smart responses, automate workflows, and enhance customer interaction 
+            with machine learning and NLP.</p>
+        </div>
+
+        <div class="category">
+            <h3>4. Media Downloader Integration</h3>
+            <p>Providing links to **top media download platforms** for downloading videos, music, and other content seamlessly.</p>
+        </div>
+
+        <div class="category">
+            <h3>5. Programming Quiz System</h3>
+            <p>Creating **interactive programming quizzes** powered by AI, where users can test their knowledge in JavaScript, Python, 
+            HTML, and more.</p>
+        </div>
+
+        <div class="category">
+            <h3>6. Logo Creator Websites</h3>
+            <p>Offering **top logo creation platforms** for users to design their own professional logos with customizable templates.</p>
+        </div>
+
+        <div class="category">
+            <h3>7. Deployment Platforms</h3>
+            <p>Providing a list of **best deployment platforms** for hosting and managing web applications efficiently.</p>
+        </div>
+
+        <div class="category">
+            <h3>8. Website Rating System</h3>
+            <p>Developing a **live rating system** where visitors can **give feedback, reactions, and reviews** on the FredieTech website.</p>
+        </div>
+
+        <div class="category">
+            <h3>9. Real-Time Visitor Statistics</h3>
+            <p>Tracking live visitor counts, locations, and time zones using a real-time analytics system.</p>
+        </div>
+
+        <div class="category">
+            <h3>10. Group Chat & Direct Messaging</h3>
+            <p>Building **a secure chat platform** with sign-in functionality, emoji reactions, and real-time messaging.</p>
+        </div>
+
+        <div class="category">
+            <h3>11. Automated Customer Support Bots</h3>
+            <p>Developing **smart AI-driven bots** that provide customer support, respond to FAQs, and handle queries efficiently.</p>
+        </div>
+
+        <div class="category">
+            <h3>12. Puzzle Games</h3>
+            <p>Creating **fun, interactive puzzle games** that challenge users with brain teasers and logic problems.</p>
+        </div>
+
+        <div class="category">
+            <h3>13. Online Security & Encryption</h3>
+            <p>Ensuring **data security and privacy** in web applications by implementing **encryption and authentication mechanisms**.</p>
+        </div>
+
+        <div class="category">
+            <h3>14. Interactive Dashboards</h3>
+            <p>Designing **modern dashboards** with intuitive interfaces, real-time updates, and **advanced analytics**.</p>
+        </div>
+
+        <div class="category">
+            <h3>15. API-Free Functionalities</h3>
+            <p>Creating **web features without relying on third-party APIs**, making everything work directly through custom scripts.</p>
+        </div>
+
+        <div class="category">
+            <h3>16. Automation Tools</h3>
+            <p>Developing **custom automation tools** to simplify repetitive tasks like data collection, messaging, and scheduling.</p>
+        </div>
+
+        <div class="category">
+            <h3>17. AI-Assisted Development</h3>
+            <p>Using **AI tools to enhance coding efficiency**, optimize performance, and build **smarter web applications**.</p>
+        </div>
+
+        <div class="category">
+            <h3>18. Video Streaming Platforms</h3>
+            <p>Building platforms that support **video streaming, downloads, and sharing across multiple devices**.</p>
+        </div>
+
+        <div class="category">
+            <h3>19. Real-Time Notifications</h3>
+            <p>Implementing **instant notifications** for web apps, including **user alerts, messages, and updates**.</p>
+        </div>
+
+        <div class="category">
+            <h3>20. AI-Powered Content Creation</h3>
+            <p>Developing **AI-driven tools for generating text, images, and interactive content** for websites and bots.</p>
+        </div>
+
+    </section>
 
     <section class="projects">
         <h2>My Projects & Development</h2>
@@ -111,21 +202,9 @@
         <a href="https://github.com/Fred1e" target="_blank">GitHub Account</a>
         <a href="https://whatsapp.com/channel/0029VaihcQv84Om8LP59fO3f" target="_blank">WhatsApp Channel</a>
         <a href="https://youtube.com/@freeonlinetvT1" target="_blank">YouTube Channel</a>
-        <p>Contact me on WhatsApp:</p>
-        <a href="https://wa.me/255752593977" target="_blank">Contact us1</a>
-        <a href="https://wa.me/255620814108" target="_blank">Contact us2</a>
     </section>
 
     <a href="index.html"><button>Back to Home</button></a>
-
-    <script>
-        function startSearch() {
-            document.getElementById('loadingScreen').style.display = 'flex';
-            setTimeout(() => {
-                window.location.href = 'dashboard.html'; 
-            }, 2000);
-        }
-    </script>
 
 </body>
 </html>
