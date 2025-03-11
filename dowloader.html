@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Media Dowloader Place</title>
   <link rel="stylesheet" href="assets/styles.css">
-  <!-- Font Awesome for icons (if needed) -->
+  <!-- Font Awesome for icons -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
   <style>
     /* Flexible neon-style background */
@@ -31,7 +31,7 @@
       font-size: 18px;
       margin: 15px auto;
       max-width: 800px;
-      color: #dcdcdc;
+      color: cyan;
     }
     /* Chat/Dowloader container */
     #chat-container {
@@ -53,32 +53,33 @@
     .message {
       margin: 10px 0;
       padding: 10px 15px;
-      border-radius: 10px;
+      border-radius: 8px;
       max-width: 70%;
       word-wrap: break-word;
+      position: relative;
     }
     .user-message {
+      background-color: #007BFF;
       align-self: flex-end;
-      background-color: green;
       color: white;
     }
     .ai-message {
+      background-color: #444;
       align-self: flex-start;
-      background-color: blue;
       color: white;
     }
-    /* Input area with two rows: text and attach button */
+    /* Input area with two rows */
     #input-area {
-      background: rgba(34, 34, 34, 0.9);
-      padding: 10px;
       display: flex;
       flex-direction: column;
-      gap: 5px;
+      padding: 10px;
+      background: rgba(34, 34, 34, 0.9);
+      transition: background 0.5s;
     }
     .input-row {
       display: flex;
       align-items: center;
-      gap: 10px;
+      margin-bottom: 5px;
     }
     #chat-input {
       flex: 1;
@@ -90,25 +91,16 @@
     #send-btn, #attach-btn {
       padding: 10px 20px;
       font-size: 16px;
-      font-weight: bold;
+      margin-left: 10px;
       border: none;
       border-radius: 5px;
+      background-color: #007BFF;
       color: white;
       cursor: pointer;
       transition: background 0.3s;
     }
-    #send-btn {
-      background-color: purple;
-    }
-    #send-btn:hover {
-      background-color: #800080;
-    }
-    #attach-btn {
-      background-color: yellow;
-      color: black;
-    }
-    #attach-btn:hover {
-      background-color: #e6b800;
+    #send-btn:hover, #attach-btn:hover {
+      background-color: #0056b3;
     }
     #file-input {
       display: none;
@@ -191,18 +183,17 @@
   <script>
     // Simulated media search & download function
     async function downloadMedia(query) {
-      // Simulate a 3-second delay (for instructions)
+      // Simulate a 3-second delay to display instructions
       await new Promise(resolve => setTimeout(resolve, 3000));
 
-      // For demonstration, pick one video and one audio URL (replace with your API calls)
-      const videoUrl = "https://api-rin-tohsaka.vercel.app/download/ytmp4?url=" + encodeURIComponent(query);
-      const audioUrl = "https://api.giftedtech.web.id/api/download/dlmp3?url=" + encodeURIComponent(query) + "&apikey=gifted-md";
+      // For demonstration, we'll use a placeholder video and audio URL.
+      const videoUrl = "https://www.w3schools.com/html/mov_bbb.mp4";  // Known working sample video.
+      const audioUrl = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"; // Sample audio
 
-      // Simulated media details
       return {
         title: "Sample Media: " + query,
         description: "This is a sample media file for the query: " + query + ". You can play or download the video and audio.",
-        thumbnail: "https://source.unsplash.com/800x450/?technology",  // Replace with actual thumbnail if available
+        thumbnail: "https://via.placeholder.com/800x450?text=Media+Thumbnail",
         videoUrl,
         audioUrl
       };
@@ -216,14 +207,9 @@
       addMessage(query, "user-message");
       input.value = "";
       
-      // Simulate an API call to download media based on query
       const mediaData = await downloadMedia(query);
-      
-      // Add AI message with media details
       const aiMessage = `Found media for "${query}": ${mediaData.title}`;
       addMessage(aiMessage, "ai-message");
-      
-      // Display media result box
       displayMedia(mediaData);
     }
     
@@ -240,7 +226,6 @@
       document.getElementById("media-title").textContent = mediaData.title;
       document.getElementById("media-description").textContent = mediaData.description;
       
-      // Display thumbnail
       const thumbContainer = document.getElementById("media-thumbnail-container");
       thumbContainer.innerHTML = "";
       const img = document.createElement("img");
@@ -250,25 +235,23 @@
       img.style.borderRadius = "5px";
       thumbContainer.appendChild(img);
       
-      // Store media URLs in data attributes for media control functions
+      // Store media URLs for media control functions
       document.getElementById("media-result").dataset.videoUrl = mediaData.videoUrl;
       document.getElementById("media-result").dataset.audioUrl = mediaData.audioUrl;
       
-      // Show the media result box
       document.getElementById("media-result").style.display = "block";
     }
     
-    // Media control functions
     let mediaPlayer;
     function mediaPlay() {
       if (!mediaPlayer) {
-        // Create a video element if not exists
         mediaPlayer = document.createElement("video");
         mediaPlayer.controls = true;
         mediaPlayer.style.width = "100%";
         mediaPlayer.src = document.getElementById("media-result").dataset.videoUrl;
-        document.getElementById("media-thumbnail-container").innerHTML = "";
-        document.getElementById("media-thumbnail-container").appendChild(mediaPlayer);
+        const thumbContainer = document.getElementById("media-thumbnail-container");
+        thumbContainer.innerHTML = "";
+        thumbContainer.appendChild(mediaPlayer);
       }
       mediaPlayer.play();
     }
@@ -286,7 +269,6 @@
     }
     
     function mediaNext() {
-      // For demonstration, simply alert
       alert("Next media not implemented in demo.");
     }
     
@@ -296,6 +278,5 @@
   </script>
 
   <a href="index.html" style="display: block; margin-top: 20px; color: lightblue;">Back to Home</a>
-
 </body>
 </html>
