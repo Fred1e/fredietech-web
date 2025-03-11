@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FredieTech Live Chat</title>
   <link rel="stylesheet" href="assets/styles.css">
+  <!-- Font Awesome for icons -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
   <style>
     :root {
@@ -19,8 +20,8 @@
       --text-light: #333;
       --header-light: #eee;
       --chat-bg-light: #fff;
-      --user-msg-light: #27ae60; /* slightly different green */
-      --ai-msg-light: #2980b9;   /* slightly different blue */
+      --user-msg-light: #27ae60;
+      --ai-msg-light: #2980b9;
     }
 
     /* Default to dark mode */
@@ -62,7 +63,7 @@
       background: var(--ai-msg-light);
     }
     
-    /* Chat container */
+    /* Chat container takes full screen minus header */
     #chat-container {
       display: flex;
       flex-direction: column;
@@ -74,6 +75,7 @@
       transition: background 0.5s;
     }
     
+    /* Messages area */
     #messages {
       flex: 1;
       overflow-y: auto;
@@ -86,7 +88,6 @@
       border-radius: 10px;
       max-width: 70%;
       word-wrap: break-word;
-      position: relative;
     }
     
     .user-message {
@@ -101,8 +102,25 @@
       color: white;
     }
     
+    /* Media message styling */
+    .media-message {
+      margin: 10px 0;
+      max-width: 70%;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .media-message img {
+      width: 100%;
+      display: block;
+    }
+    .media-message audio {
+      width: 100%;
+    }
+    
+    /* Input area */
     #input-area {
       display: flex;
+      align-items: center;
       padding: 10px;
       background: var(--header-dark);
       transition: background 0.5s;
@@ -116,7 +134,7 @@
       border-radius: 5px;
     }
     
-    #send-btn {
+    #send-btn, #attach-btn {
       padding: 10px 20px;
       font-size: 16px;
       margin-left: 10px;
@@ -128,8 +146,17 @@
       transition: background 0.3s;
     }
     
-    #send-btn:hover {
+    #send-btn:hover, #attach-btn:hover {
       background-color: var(--ai-msg-light);
+    }
+    
+    #file-input {
+      display: none;
+    }
+    
+    /* Full screen DM container */
+    html, body, #chat-container {
+      height: 100%;
     }
   </style>
 </head>
@@ -146,6 +173,8 @@
     </div>
     <div id="input-area">
       <input type="text" id="chat-input" placeholder="Type your message here...">
+      <button id="attach-btn" onclick="document.getElementById('file-input').click()">Attach</button>
+      <input type="file" id="file-input" accept="image/*,audio/*">
       <button id="send-btn" onclick="sendMessage()">Send</button>
     </div>
   </div>
@@ -170,14 +199,14 @@
     }
 
     async function getAIResponse(userMessage) {
-      // Replace with your backend endpoint that calls the ChatGPT API securely.
-      // This example uses a placeholder response.
+      // Replace with your secure backend that calls ChatGPT API.
+      // For demo, we'll simulate a delay and a static response.
       await new Promise(resolve => setTimeout(resolve, 1500));
-      if(userMessage.toLowerCase().includes("logo")) {
-          return "Logos are an essential element for branding. They are designed to be memorable, scalable, and reflective of a company's identity.";
+      if(userMessage.toLowerCase().includes("media")) {
+          return "When it comes to media, you can send images, audio, or videos. For example, you might upload a photo or an audio clip.";
       }
       if(userMessage.toLowerCase().includes("programming")) {
-          return "Programming involves writing code in languages like JavaScript, Python, and Java to build software, websites, and applications.";
+          return "Programming involves writing code in languages like JavaScript, Python, and Java. For example, in JavaScript: console.log('Hello, World!');";
       }
       return "I'm here to help with your questions about programming, chatbots, or media.";
     }
@@ -200,6 +229,42 @@
       messageElem.classList.add("message", type);
       messageElem.textContent = text;
       messagesContainer.appendChild(messageElem);
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }
+
+    // Handle file attachment (images and audio)
+    document.getElementById("file-input").addEventListener("change", function(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const mediaURL = e.target.result;
+        addMediaMessage(mediaURL, file.type);
+      };
+      reader.readAsDataURL(file);
+    });
+
+    function addMediaMessage(mediaURL, type) {
+      const messagesContainer = document.getElementById("messages");
+      const mediaElem = document.createElement("div");
+      mediaElem.classList.add("message", "user-message", "media-message");
+      
+      if(type.startsWith("image/")) {
+        const img = document.createElement("img");
+        img.src = mediaURL;
+        img.alt = "User attached image";
+        mediaElem.appendChild(img);
+      } else if(type.startsWith("audio/")) {
+        const audio = document.createElement("audio");
+        audio.controls = true;
+        audio.src = mediaURL;
+        mediaElem.appendChild(audio);
+      } else {
+        mediaElem.textContent = "Unsupported media type.";
+      }
+      
+      messagesContainer.appendChild(mediaElem);
       messagesContainer.scrollTop = messagesContainer.scrollHeight;
     }
   </script>
