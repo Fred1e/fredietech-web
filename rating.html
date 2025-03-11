@@ -5,26 +5,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rate the Website</title>
     <link rel="stylesheet" href="assets/styles.css">
+    <script src="JavaScript/rating.js" defer></script>
 </head>
 <body>
-    <header style="background-image: url('https://files.catbox.moe/hqt8ca.jpg');">
+    <header>
         <h1>Rate FredieTech</h1>
     </header>
 
-    <div class="rating">
-        <p>Give your rating:</p>
-        <span onclick="rate(1)">⭐</span>
-        <span onclick="rate(2)">⭐</span>
-        <span onclick="rate(3)">⭐</span>
-        <span onclick="rate(4)">⭐</span>
-        <span onclick="rate(5)">⭐</span>
+    <!-- Live Stats Section -->
+    <div class="stats-container">
+        <div class="stat-box red">
+            <h2>Visitor Count</h2>
+            <p id="visitorCount">Loading...</p>
+        </div>
+
+        <div class="stat-box blue">
+            <h2>Top Visitor Countries</h2>
+            <p id="topCountries">Loading...</p>
+        </div>
+
+        <div class="stat-box green">
+            <h2>Visitor Time Zones</h2>
+            <p id="visitorTimeZones">Loading...</p>
+        </div>
+
+        <div class="stat-box yellow">
+            <h2>Owner's Time Zone</h2>
+            <p id="ownerTimeZone">Loading...</p>
+        </div>
+
+        <div class="stat-box purple">
+            <h2>Live Time</h2>
+            <p id="liveTime">Loading...</p>
+        </div>
     </div>
 
-    <script>
-        function rate(stars) {
-            alert("You rated " + stars + " stars! Thank you!");
-        }
-    </script>
+    <!-- Rating Section -->
+    <div class="rating-container">
+        <h2>Rate This Website</h2>
+        <div class="stars">
+            <span onclick="rate(1)">⭐</span>
+            <span onclick="rate(2)">⭐</span>
+            <span onclick="rate(3)">⭐</span>
+            <span onclick="rate(4)">⭐</span>
+            <span onclick="rate(5)">⭐</span>
+        </div>
+        <p id="ratingMessage">Click stars to rate!</p>
+        <p>Total Ratings: <span id="totalRatings">0</span></p>
+    </div>
+
+    <!-- Emoji Reactions -->
+    <div class="emoji-container">
+        <h2>React to This Website</h2>
+        <div id="emojiList">
+            😊 😂 ❤️ 👍 🎉 😍 🤯 🤔 😎 😜 😭 😡 👏 🙏 🚀 🔥 💯 👀
+        </div>
+        <p>Total Reactions: <span id="totalReactions">0</span></p>
+    </div>
 
     <a href="index.html">Back to Home</a>
 </body>
