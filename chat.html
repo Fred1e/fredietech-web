@@ -1,24 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Live Chat</title>
-    <link rel="stylesheet" href="assets/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FredieTech Live Chat</title>
+  <link rel="stylesheet" href="assets/styles.css">
+  <style>
+    /* Full-screen layout */
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      color: white;
+    }
+    header {
+      background: #222;
+      padding: 20px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2em;
+    }
+    /* Chat container takes full screen minus header */
+    #chat-container {
+      display: flex;
+      flex-direction: column;
+      height: calc(100% - 80px);
+      max-width: 800px;
+      margin: 0 auto;
+      border: 1px solid #333;
+      background: #1e1e1e;
+    }
+    /* Messages area */
+    #messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px;
+    }
+    .message {
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 8px;
+      max-width: 70%;
+      word-wrap: break-word;
+    }
+    .user-message {
+      background-color: #007BFF;
+      align-self: flex-end;
+      color: white;
+    }
+    .ai-message {
+      background-color: #444;
+      align-self: flex-start;
+      color: white;
+    }
+    /* Input area */
+    #input-area {
+      display: flex;
+      padding: 10px;
+      background: #222;
+    }
+    #chat-input {
+      flex: 1;
+      padding: 10px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+    }
+    #send-btn {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-left: 10px;
+      border: none;
+      border-radius: 5px;
+      background-color: #007BFF;
+      color: white;
+      cursor: pointer;
+    }
+    #send-btn:hover {
+      background-color: #0056b3;
+    }
+    /* Media preview section (optional) */
+    .media-preview {
+      margin-top: 5px;
+      max-width: 100%;
+      border-radius: 5px;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>FredieTech Live Chat</h1>
-    </header>
 
-    <div id="chat-container">
-        <div id="messages"></div>
-        <input type="text" id="chat-input" placeholder="Type a message...">
-        <button onclick="sendMessage()">Send</button>
+  <header>
+    <h1>FredieTech Live Chat</h1>
+  </header>
+
+  <div id="chat-container">
+    <div id="messages">
+      <div class="message ai-message">AI: Hi! Ask me anything about programming, chatbots, or request media!</div>
     </div>
+    <div id="input-area">
+      <input type="text" id="chat-input" placeholder="Type your message here...">
+      <button id="send-btn" onclick="sendMessage()">Send</button>
+    </div>
+  </div>
 
-    <script src="assets/script.js"></script>
+  <script>
+    // Placeholder function: in production, this should call your backend that interfaces with ChatGPT API
+    async function getAIResponse(userMessage) {
+      // Simulated delay to mimic API processing
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      // Basic example logic – in practice, your backend would determine the answer
+      if(userMessage.includes("logo")) {
+        return "Here’s a detailed explanation about logo design best practices, color theory, and sample code for creating dynamic logos using HTML5 canvas.";
+      }
+      if(userMessage.includes("programming")) {
+        return "Programming is a broad field. For example, in JavaScript you can write: console.log('Hello, World!'); and in Python: print('Hello, World!').";
+      }
+      return "I'm here to help with any questions you have about programming, chatbots, or media!";
+    }
 
-    <a href="index.html">Back to Home</a>
+    async function sendMessage() {
+      const input = document.getElementById('chat-input');
+      const messageText = input.value.trim();
+      if (!messageText) return;
+      
+      addMessage(messageText, "user-message");
+      input.value = "";
+      
+      // Get AI response from your API
+      const aiResponse = await getAIResponse(messageText);
+      addMessage(aiResponse, "ai-message");
+    }
+    
+    function addMessage(text, type) {
+      const messagesContainer = document.getElementById("messages");
+      const messageElem = document.createElement("div");
+      messageElem.classList.add("message", type);
+      messageElem.textContent = text;
+      messagesContainer.appendChild(messageElem);
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }
+    
+    // Optional: support media uploads (this is just a placeholder for file input handling)
+    function addMediaMessage(mediaURL, type) {
+      const messagesContainer = document.getElementById("messages");
+      const mediaElem = document.createElement("img");
+      mediaElem.src = mediaURL;
+      mediaElem.classList.add("media-preview", type);
+      messagesContainer.appendChild(mediaElem);
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }
+  </script>
+
+  <!-- In production, you would secure your API keys and route calls through a backend server. -->
+  <a href="index.html" style="display: block; margin-top: 20px; color: lightblue;">Back to Home</a>
+
 </body>
 </html>
