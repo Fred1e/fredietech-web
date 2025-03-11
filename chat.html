@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FredieTech Live Chat</title>
   <link rel="stylesheet" href="assets/styles.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
   <style>
     /* Full-screen layout */
     html, body {
@@ -16,8 +17,8 @@
       color: white;
     }
     header {
-      background: #222;
       padding: 20px;
+      background-color: #222;
       text-align: center;
     }
     header h1 {
@@ -83,12 +84,6 @@
     #send-btn:hover {
       background-color: #0056b3;
     }
-    /* Media preview section (optional) */
-    .media-preview {
-      margin-top: 5px;
-      max-width: 100%;
-      border-radius: 5px;
-    }
   </style>
 </head>
 <body>
@@ -108,29 +103,27 @@
   </div>
 
   <script>
-    // Placeholder function: in production, this should call your backend that interfaces with ChatGPT API
     async function getAIResponse(userMessage) {
-      // Simulated delay to mimic API processing
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      // Basic example logic – in practice, your backend would determine the answer
-      if(userMessage.includes("logo")) {
-        return "Here’s a detailed explanation about logo design best practices, color theory, and sample code for creating dynamic logos using HTML5 canvas.";
+      const uid = "user1"; // You can change this per user/session
+      const apiUrl = `https://api.brainshop.ai/get?bid=177607&key=NwzhALqeO1kubFVD&uid=${uid}&msg=${encodeURIComponent(userMessage)}`;
+      try {
+        const response = await fetch(apiUrl);
+        const data = await response.json();
+        return data.cnt || "Sorry, I didn't understand that.";
+      } catch (error) {
+        console.error("Error fetching AI response:", error);
+        return "There was an error processing your request.";
       }
-      if(userMessage.includes("programming")) {
-        return "Programming is a broad field. For example, in JavaScript you can write: console.log('Hello, World!'); and in Python: print('Hello, World!').";
-      }
-      return "I'm here to help with any questions you have about programming, chatbots, or media!";
     }
 
     async function sendMessage() {
-      const input = document.getElementById('chat-input');
+      const input = document.getElementById("chat-input");
       const messageText = input.value.trim();
       if (!messageText) return;
       
       addMessage(messageText, "user-message");
       input.value = "";
       
-      // Get AI response from your API
       const aiResponse = await getAIResponse(messageText);
       addMessage(aiResponse, "ai-message");
     }
@@ -143,19 +136,8 @@
       messagesContainer.appendChild(messageElem);
       messagesContainer.scrollTop = messagesContainer.scrollHeight;
     }
-    
-    // Optional: support media uploads (this is just a placeholder for file input handling)
-    function addMediaMessage(mediaURL, type) {
-      const messagesContainer = document.getElementById("messages");
-      const mediaElem = document.createElement("img");
-      mediaElem.src = mediaURL;
-      mediaElem.classList.add("media-preview", type);
-      messagesContainer.appendChild(mediaElem);
-      messagesContainer.scrollTop = messagesContainer.scrollHeight;
-    }
   </script>
 
-  <!-- In production, you would secure your API keys and route calls through a backend server. -->
   <a href="index.html" style="display: block; margin-top: 20px; color: lightblue;">Back to Home</a>
 
 </body>
