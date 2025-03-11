@@ -3,23 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Puzzle Game</title>
-    <link rel="stylesheet" href="assets/styles.css">
+    <title>Puzzle Games Collection</title>
+    <link rel="stylesheet" href="gamestyle.css">
 </head>
 <body>
     <header>
-        <h1>Play the Puzzle Game</h1>
+        <h1>Puzzle Games Collection</h1>
     </header>
 
-    <p>Click the button below to start the puzzle game:</p>
-    <button onclick="startPuzzle()">Start Puzzle</button>
+    <div class="game-container">
+        <!-- Sliding Puzzle Game -->
+        <div class="game-card">
+            <h2>Sliding Puzzle</h2>
+            <p>Arrange the tiles to form the complete image.</p>
+            <button onclick="startGame('slidingPuzzle')">Play</button>
+        </div>
 
-    <script>
-        function startPuzzle() {
-            alert("Puzzle game is starting...");
-        }
-    </script>
+        <!-- Picture Puzzle Game -->
+        <div class="game-card">
+            <h2>Picture Puzzle</h2>
+            <p>Reassemble the scrambled picture pieces.</p>
+            <button onclick="startGame('picturePuzzle')">Play</button>
+        </div>
 
-    <a href="index.html">Back to Home</a>
+        <!-- Minesweeper Game -->
+        <div class="game-card">
+            <h2>Minesweeper</h2>
+            <p>Uncover all squares without triggering any mines.</p>
+            <button onclick="startGame('minesweeper')">Play</button>
+        </div>
+
+        <!-- Tetrimino Puzzle Game -->
+        <div class="game-card">
+            <h2>Tetrimino Puzzle</h2>
+            <p>Fit the falling blocks to complete horizontal lines.</p>
+            <button onclick="startGame('tetriminoPuzzle')">Play</button>
+        </div>
+    </div>
+
+    <div id="gameInstructions" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeInstructions()">&times;</span>
+            <p id="instructionsText"></p>
+        </div>
+    </div>
+
+    <script src="gamescript.js"></script>
 </body>
 </html>
