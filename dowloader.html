@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Media Dowloader Place</title>
+  <link rel="stylesheet" href="assets/styles.css">
+  <!-- Font Awesome for icons (if needed) -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <style>
+    /* Flexible neon-style background */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      color: white;
+      height: 100%;
+    }
+    header {
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 0 10px cyan;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+    }
+    .description {
+      font-size: 18px;
+      margin: 15px auto;
+      max-width: 800px;
+      color: #dcdcdc;
+    }
+    /* Chat/Dowloader container */
+    #chat-container {
+      display: flex;
+      flex-direction: column;
+      height: calc(100% - 120px);
+      max-width: 800px;
+      margin: 20px auto;
+      background-color: rgba(0, 0, 0, 0.7);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(0,255,255,0.5);
+    }
+    #messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px;
+    }
+    .message {
+      margin: 10px 0;
+      padding: 10px 15px;
+      border-radius: 10px;
+      max-width: 70%;
+      word-wrap: break-word;
+    }
+    .user-message {
+      align-self: flex-end;
+      background-color: green;
+      color: white;
+    }
+    .ai-message {
+      align-self: flex-start;
+      background-color: blue;
+      color: white;
+    }
+    /* Input area with two rows: text and attach button */
+    #input-area {
+      background: rgba(34, 34, 34, 0.9);
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .input-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    #chat-input {
+      flex: 1;
+      padding: 10px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+    }
+    #send-btn, #attach-btn {
+      padding: 10px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    #send-btn {
+      background-color: purple;
+    }
+    #send-btn:hover {
+      background-color: #800080;
+    }
+    #attach-btn {
+      background-color: yellow;
+      color: black;
+    }
+    #attach-btn:hover {
+      background-color: #e6b800;
+    }
+    #file-input {
+      display: none;
+    }
+    /* Media result container */
+    #media-result {
+      margin: 20px auto;
+      max-width: 800px;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px white;
+    }
+    #media-result h2 {
+      margin-top: 0;
+    }
+    .media-controls {
+      margin-top: 10px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+    .media-controls button {
+      padding: 10px;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      color: white;
+    }
+    .play-btn { background-color: blue; }
+    .pause-btn { background-color: green; }
+    .prev-btn { background-color: purple; }
+    .next-btn { background-color: yellow; color: black; }
+    .forward-btn { background-color: black; }
+    /* Full screen adjustments */
+    html, body, #chat-container {
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Media Dowloader Place</h1>
+    <p class="description">Type a video URL or search query to download media. The system will fetch video (mp4) and audio (mp3) samples along with details, which you can then play or download.</p>
+  </header>
+
+  <div id="chat-container">
+    <div id="messages">
+      <div class="message ai-message">AI: Welcome! Please enter a video URL or search query.</div>
+    </div>
+    <div id="input-area">
+      <div class="input-row">
+        <input type="text" id="chat-input" placeholder="Type your query here...">
+        <button id="send-btn" onclick="sendMessage()">Send</button>
+      </div>
+      <div class="input-row">
+        <button id="attach-btn" onclick="document.getElementById('file-input').click()">Attach</button>
+        <input type="file" id="file-input" accept="image/*,audio/*">
+      </div>
+    </div>
+  </div>
+
+  <!-- Media Result Section (hidden by default) -->
+  <div id="media-result" style="display: none;">
+    <h2 id="media-title">Media Title</h2>
+    <div id="media-thumbnail-container"></div>
+    <p id="media-description">Media description and details.</p>
+    <div class="media-controls">
+      <button class="prev-btn" onclick="mediaPrev()">Prev</button>
+      <button class="play-btn" onclick="mediaPlay()">Play</button>
+      <button class="pause-btn" onclick="mediaPause()">Pause</button>
+      <button class="next-btn" onclick="mediaNext()">Next</button>
+      <button class="forward-btn" onclick="mediaForward()">+5s</button>
+    </div>
+  </div>
+
+  <script>
+    // Simulated media search & download function
+    async function downloadMedia(query) {
+      // Simulate a 3-second delay (for instructions)
+      await new Promise(resolve => setTimeout(resolve, 3000));
+
+      // For demonstration, pick one video and one audio URL (replace with your API calls)
+      const videoUrl = "https://api-rin-tohsaka.vercel.app/download/ytmp4?url=" + encodeURIComponent(query);
+      const audioUrl = "https://api.giftedtech.web.id/api/download/dlmp3?url=" + encodeURIComponent(query) + "&apikey=gifted-md";
+
+      // Simulated media details
+      return {
+        title: "Sample Media: " + query,
+        description: "This is a sample media file for the query: " + query + ". You can play or download the video and audio.",
+        thumbnail: "https://source.unsplash.com/800x450/?technology",  // Replace with actual thumbnail if available
+        videoUrl,
+        audioUrl
+      };
+    }
+
+    async function sendMessage() {
+      const input = document.getElementById("chat-input");
+      const query = input.value.trim();
+      if (!query) return;
+      
+      addMessage(query, "user-message");
+      input.value = "";
+      
+      // Simulate an API call to download media based on query
+      const mediaData = await downloadMedia(query);
+      
+      // Add AI message with media details
+      const aiMessage = `Found media for "${query}": ${mediaData.title}`;
+      addMessage(aiMessage, "ai-message");
+      
+      // Display media result box
+      displayMedia(mediaData);
+    }
+    
+    function addMessage(text, type) {
+      const messagesContainer = document.getElementById("messages");
+      const messageElem = document.createElement("div");
+      messageElem.classList.add("message", type);
+      messageElem.textContent = text;
+      messagesContainer.appendChild(messageElem);
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }
+
+    function displayMedia(mediaData) {
+      document.getElementById("media-title").textContent = mediaData.title;
+      document.getElementById("media-description").textContent = mediaData.description;
+      
+      // Display thumbnail
+      const thumbContainer = document.getElementById("media-thumbnail-container");
+      thumbContainer.innerHTML = "";
+      const img = document.createElement("img");
+      img.src = mediaData.thumbnail;
+      img.alt = "Media Thumbnail";
+      img.style.width = "100%";
+      img.style.borderRadius = "5px";
+      thumbContainer.appendChild(img);
+      
+      // Store media URLs in data attributes for media control functions
+      document.getElementById("media-result").dataset.videoUrl = mediaData.videoUrl;
+      document.getElementById("media-result").dataset.audioUrl = mediaData.audioUrl;
+      
+      // Show the media result box
+      document.getElementById("media-result").style.display = "block";
+    }
+    
+    // Media control functions
+    let mediaPlayer;
+    function mediaPlay() {
+      if (!mediaPlayer) {
+        // Create a video element if not exists
+        mediaPlayer = document.createElement("video");
+        mediaPlayer.controls = true;
+        mediaPlayer.style.width = "100%";
+        mediaPlayer.src = document.getElementById("media-result").dataset.videoUrl;
+        document.getElementById("media-thumbnail-container").innerHTML = "";
+        document.getElementById("media-thumbnail-container").appendChild(mediaPlayer);
+      }
+      mediaPlayer.play();
+    }
+    
+    function mediaPause() {
+      if (mediaPlayer) {
+        mediaPlayer.pause();
+      }
+    }
+    
+    function mediaForward() {
+      if (mediaPlayer) {
+        mediaPlayer.currentTime += 5;
+      }
+    }
+    
+    function mediaNext() {
+      // For demonstration, simply alert
+      alert("Next media not implemented in demo.");
+    }
+    
+    function mediaPrev() {
+      alert("Previous media not implemented in demo.");
+    }
+  </script>
+
+  <a href="index.html" style="display: block; margin-top: 20px; color: lightblue;">Back to Home</a>
+
+</body>
+</html>
