@@ -15,7 +15,6 @@
       --chat-bg-dark: #1e1e1e;
       --user-msg-dark: #2ecc71;  /* green */
       --ai-msg-dark: #3498db;    /* blue */
-
       --bg-light: #f5f5f5;
       --text-light: #333;
       --header-light: #eee;
@@ -117,13 +116,19 @@
       width: 100%;
     }
     
-    /* Input area */
+    /* Input area: now two rows */
     #input-area {
       display: flex;
-      align-items: center;
+      flex-direction: column;
       padding: 10px;
       background: var(--header-dark);
       transition: background 0.5s;
+    }
+    
+    .input-row {
+      display: flex;
+      align-items: center;
+      margin-bottom: 5px;
     }
     
     #chat-input {
@@ -172,10 +177,14 @@
       <div class="message ai-message">AI: Hi! Ask me anything about programming, chatbots, or media!</div>
     </div>
     <div id="input-area">
-      <input type="text" id="chat-input" placeholder="Type your message here...">
-      <button id="attach-btn" onclick="document.getElementById('file-input').click()">Attach</button>
-      <input type="file" id="file-input" accept="image/*,audio/*">
-      <button id="send-btn" onclick="sendMessage()">Send</button>
+      <div class="input-row">
+        <input type="text" id="chat-input" placeholder="Type your message here...">
+        <button id="send-btn" onclick="sendMessage()">Send</button>
+      </div>
+      <div class="input-row">
+        <button id="attach-btn" onclick="document.getElementById('file-input').click()">Attach</button>
+        <input type="file" id="file-input" accept="image/*,audio/*">
+      </div>
     </div>
   </div>
 
