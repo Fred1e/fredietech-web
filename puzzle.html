@@ -16,38 +16,35 @@
         <div class="game-card">
             <h2>Sliding Puzzle</h2>
             <p>Arrange the tiles to form the complete image.</p>
-            <button onclick="startGame('slidingPuzzle')">Play</button>
+            <button onclick="startGame('https://www.proprofs.com/games/puzzle/sliding/')">Play</button>
         </div>
 
         <!-- Picture Puzzle Game -->
         <div class="game-card">
             <h2>Picture Puzzle</h2>
             <p>Reassemble the scrambled picture pieces.</p>
-            <button onclick="startGame('picturePuzzle')">Play</button>
+            <button onclick="startGame('https://www.jigsawplanet.com/')">Play</button>
         </div>
 
         <!-- Minesweeper Game -->
         <div class="game-card">
             <h2>Minesweeper</h2>
             <p>Uncover all squares without triggering any mines.</p>
-            <button onclick="startGame('minesweeper')">Play</button>
+            <button onclick="startGame('https://minesweeper.online/')">Play</button>
         </div>
 
         <!-- Tetrimino Puzzle Game -->
         <div class="game-card">
             <h2>Tetrimino Puzzle</h2>
             <p>Fit the falling blocks to complete horizontal lines.</p>
-            <button onclick="startGame('tetriminoPuzzle')">Play</button>
+            <button onclick="startGame('https://tetr.io/')">Play</button>
         </div>
     </div>
 
-    <div id="gameInstructions" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeInstructions()">&times;</span>
-            <p id="instructionsText"></p>
-        </div>
-    </div>
-
-    <script src="JavaScript/gamescript.js"></script>
+    <script>
+        function startGame(url) {
+            window.open(url, '_blank');
+        }
+    </script>
 </body>
 </html>
