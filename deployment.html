@@ -1,24 +1,214 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deployment Platforms</title>
-    <link rel="stylesheet" href="assets/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deployment Platforms</title>
+  <link rel="stylesheet" href="assets/styles.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      background-color: #111;
+      color: white;
+    }
+    header {
+      background: url('https://source.unsplash.com/featured/?cloud,tech') no-repeat center center/cover;
+      padding: 40px;
+      color: white;
+    }
+    header h1 {
+      font-size: 36px;
+      font-weight: bold;
+      text-shadow: 0 0 10px rgba(255,255,0,0.8);
+    }
+    .description {
+      font-size: 18px;
+      margin: 15px auto;
+      color: lightgray;
+      max-width: 800px;
+    }
+    .platform-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 10px;
+    }
+    .platform {
+      background: #222;
+      width: 280px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      text-align: center;
+      position: relative;
+    }
+    .platform h2 {
+      font-size: 22px;
+      margin: 10px 0;
+    }
+    .platform p {
+      font-size: 16px;
+      color: lightgray;
+      margin: 10px 0;
+    }
+    .platform button {
+      padding: 12px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+      color: white;
+    }
+    /* Color classes for buttons (and card borders) */
+    .red { background-color: #e74c3c; }
+    .blue { background-color: #3498db; }
+    .yellow { background-color: #f1c40f; color: black; }
+    .purple { background-color: #9b59b6; }
+    /* Hover effect */
+    .platform button:hover {
+      opacity: 0.9;
+    }
+    /* Support links styling */
+    .support-links {
+      margin-top: 20px;
+    }
+    .support-links a {
+      display: inline-block;
+      margin: 5px;
+      background: #008000;
+      padding: 10px;
+      border-radius: 5px;
+      text-decoration: none;
+      color: white;
+    }
+    .support-links a:hover {
+      background: #006600;
+    }
+    a.back-link {
+      display: block;
+      margin: 30px auto;
+      padding: 12px 20px;
+      font-size: 16px;
+      text-decoration: none;
+      color: white;
+      background: #ff6347;
+      border-radius: 5px;
+      width: 200px;
+    }
+    a.back-link:hover {
+      background: #e55347;
+    }
+  </style>
 </head>
 <body>
-    <header style="background-image: url('https://files.catbox.moe/aad6wc.jpg');">
-        <h1>Deployment Platforms</h1>
-    </header>
 
-    <ul>
-        <li><a href="https://www.netlify.com">Netlify</a></li>
-        <li><a href="https://www.vercel.com">Vercel</a></li>
-        <li><a href="https://www.github.com">GitHub Pages</a></li>
-        <li><a href="https://www.heroku.com">Heroku</a></li>
-        <li><a href="https://www.render.com">Render</a></li>
-    </ul>
+  <header>
+    <h1>Deployment Platforms</h1>
+  </header>
 
-    <a href="index.html">Back to Home</a>
+  <p class="description">
+    Discover the best platforms for deploying your web applications. Click on a platform card to visit its website.
+  </p>
+
+  <div class="platform-container">
+    <!-- Existing platforms -->
+    <div class="platform">
+      <h2>Netlify</h2>
+      <p>Deploy static sites with ease using Netlify’s powerful CI/CD.</p>
+      <button class="blue" onclick="window.open('https://www.netlify.com', '_blank')">Open</button>
+    </div>
+    <div class="platform">
+      <h2>Vercel</h2>
+      <p>Deploy your JAMstack sites quickly with Vercel's seamless integration.</p>
+      <button class="purple" onclick="window.open('https://www.vercel.com', '_blank')">Open</button>
+    </div>
+    <div class="platform">
+      <h2>GitHub Pages</h2>
+      <p>Host static websites directly from your GitHub repository.</p>
+      <button class="yellow" onclick="window.open('https://pages.github.com', '_blank')">Open</button>
+    </div>
+    <div class="platform">
+      <h2>Heroku</h2>
+      <p>Deploy dynamic web applications easily on Heroku's cloud platform.</p>
+      <button class="red" onclick="window.open('https://www.heroku.com', '_blank')">Open</button>
+    </div>
+    <div class="platform">
+      <h2>Render</h2>
+      <p>Deploy full-stack apps and static sites with Render's modern infrastructure.</p>
+      <button class="blue" onclick="window.open('https://www.render.com', '_blank')">Open</button>
+    </div>
+    <!-- Additional platforms -->
+    <div class="platform">
+      <h2>DigitalOcean</h2>
+      <p>Scale your applications with DigitalOcean’s simple cloud infrastructure.</p>
+      <button class="purple" onclick="window.open('https://www.digitalocean.com', '_blank')">Open</button>
+    </div>
+    <div class="platform">
+      <h2>AWS</h2>
+      <p>Utilize Amazon Web Services for robust and scalable cloud solutions.</p>
+      <button class="yellow" onclick="window.open('https://aws.amazon.com', '_blank')">Open</button>
+    </div>
+    <div class="platform">
+      <h2>Google Cloud</h2>
+      <p>Deploy your projects with Google Cloud Platform's powerful services.</p>
+      <button class="blue" onclick="window.open('https://cloud.google.com', '_blank')">Open</button>
+    </div>
+    <div class="platform">
+      <h2>Microsoft Azure</h2>
+      <p>Build, deploy, and manage apps using Azure’s comprehensive cloud solutions.</p>
+      <button class="red" onclick="window.open('https://azure.microsoft.com', '_blank')">Open</button>
+    </div>
+    <div class="platform">
+      <h2>Firebase</h2>
+      <p>Leverage Firebase for rapid app development with real-time databases.</p>
+      <button class="purple" onclick="window.open('https://firebase.google.com', '_blank')">Open</button>
+    </div>
+    <div class="platform">
+      <h2>Linode</h2>
+      <p>Get high-performance Linux servers for your projects with Linode.</p>
+      <button class="yellow" onclick="window.open('https://www.linode.com', '_blank')">Open</button>
+    </div>
+    <div class="platform">
+      <h2>Oracle Cloud</h2>
+      <p>Deploy enterprise applications with Oracle Cloud’s innovative services.</p>
+      <button class="blue" onclick="window.open('https://www.oracle.com/cloud/', '_blank')">Open</button>
+    </div>
+    <div class="platform">
+      <h2>IBM Cloud</h2>
+      <p>Build and deploy solutions with IBM Cloud’s versatile platform.</p>
+      <button class="red" onclick="window.open('https://www.ibm.com/cloud', '_blank')">Open</button>
+    </div>
+    <div class="platform">
+      <h2>Cloudflare Pages</h2>
+      <p>Host static sites with Cloudflare's fast global network.</p>
+      <button class="purple" onclick="window.open('https://pages.cloudflare.com', '_blank')">Open</button>
+    </div>
+    <div class="platform">
+      <h2>Surge.sh</h2>
+      <p>Deploy front-end projects quickly using Surge.sh’s simple CLI.</p>
+      <button class="yellow" onclick="window.open('https://surge.sh', '_blank')">Open</button>
+    </div>
+  </div>
+
+  <div class="support-links">
+    <a href="https://github.com/Fred1e">GitHub</a>
+    <a href="https://github.com/Fred1e/lucky_md">WhatsApp Bot Repo</a>
+    <a href="https://whatsapp.com/channel/0029VaihcQv84Om8LP59fO3f">WhatsApp Channel</a>
+    <a href="https://youtube.com/@freeonlinetvT1">YouTube Channel</a>
+  </div>
+
+  <a href="index.html" class="back-link" style="display: block; margin-top: 20px; color: lightblue;">Back to Home</a>
+  
+  <script>
+    // No additional JS required for basic button functionality
+  </script>
 </body>
 </html>
