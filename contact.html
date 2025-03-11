@@ -3,22 +3,144 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us</title>
+    <title>Contact & Social Platforms</title>
     <link rel="stylesheet" href="assets/styles.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-color: #111;
+            color: white;
+        }
+
+        header {
+            background-image: url('https://files.catbox.moe/270fec.jpg');
+            padding: 30px;
+            color: white;
+        }
+
+        h1 {
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        .social-container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .social {
+            background: #222;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            margin: 10px 0;
+            border: 1px solid #333;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .social i {
+            font-size: 24px;
+            margin-right: 10px;
+        }
+
+        .press-btn {
+            padding: 10px 15px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .press-btn:hover {
+            opacity: 0.8;
+        }
+    </style>
 </head>
 <body>
-    <header style="background-image: url('https://files.catbox.moe/270fec.jpg');">
-        <h1>Contact & Social Platforms</h1>
-    </header>
 
-    <ul>
-        <li><a href="https://www.facebook.com">Facebook</a></li>
-        <li><a href="https://www.twitter.com">Twitter</a></li>
-        <li><a href="https://www.instagram.com">Instagram</a></li>
-        <li><a href="https://www.whatsapp.com">WhatsApp</a></li>
-        <li><a href="https://www.linkedin.com">LinkedIn</a></li>
-    </ul>
+<header>
+    <h1>Contact & Social Platforms</h1>
+</header>
 
-    <a href="index.html">Back to Home</a>
+<div class="social-container">
+    <div class="social">
+        <i class="fab fa-facebook"></i>
+        <span>Facebook</span>
+        <button class="press-btn" onclick="window.open('https://www.facebook.com/profile.php?id=61553209932337', '_blank')">Press</button>
+    </div>
+
+    <div class="social">
+        <i class="fab fa-threads"></i>
+        <span>Threads</span>
+        <button class="press-btn" onclick="window.open('https://www.threads.net/@fredi.simba.tz', '_blank')">Press</button>
+    </div>
+
+    <div class="social">
+        <i class="fab fa-instagram"></i>
+        <span>Instagram</span>
+        <button class="press-btn" onclick="window.open('https://www.instagram.com/fredi.simba.tz', '_blank')">Press</button>
+    </div>
+
+    <div class="social">
+        <i class="fab fa-tiktok"></i>
+        <span>TikTok</span>
+        <button class="press-btn" onclick="window.open('https://www.tiktok.com/@fredietech', '_blank')">Press</button>
+    </div>
+
+    <div class="social">
+        <i class="fab fa-whatsapp"></i>
+        <span>WhatsApp Channel</span>
+        <button class="press-btn" onclick="window.open('https://whatsapp.com/channel/0029VaihcQv84Om8LP59fO3f', '_blank')">Press</button>
+    </div>
+
+    <div class="social">
+        <i class="fab fa-whatsapp"></i>
+        <span>WhatsApp Chat</span>
+        <button class="press-btn" onclick="window.open('https://wa.me/255752593977?text=Hello+bro+can+you+help+me+know+about+your+works', '_blank')">Press</button>
+    </div>
+
+    <div class="social">
+        <i class="fab fa-telegram"></i>
+        <span>Telegram</span>
+        <button class="press-btn" onclick="window.open('https://t.me/freditech', '_blank')">Press</button>
+    </div>
+
+    <div class="social">
+        <i class="fab fa-linkedin"></i>
+        <span>LinkedIn</span>
+        <button class="press-btn" onclick="window.open('https://www.linkedin.com/in/fredi-ezra-6956352b7', '_blank')">Press</button>
+    </div>
+
+    <div class="social">
+        <i class="fab fa-github"></i>
+        <span>GitHub</span>
+        <button class="press-btn" onclick="window.open('https://GitHub.com/Fred1e', '_blank')">Press</button>
+    </div>
+
+    <div class="social">
+        <i class="fas fa-robot"></i>
+        <span>WhatsApp Bot</span>
+        <button class="press-btn" onclick="window.open('https://GitHub.com/Fred1e/lucky_md', '_blank')">Press</button>
+    </div>
+
+    <div class="social">
+        <i class="fab fa-youtube"></i>
+        <span>YouTube</span>
+        <button class="press-btn" onclick="window.open('https://www.youtube.com/@freeonlinetvT1', '_blank')">Press</button>
+    </div>
+</div>
+
+<a href="index.html" style="display: block; margin-top: 20px; font-size: 18px; color: lightgray;">Back to Home</a>
+
 </body>
 </html>
