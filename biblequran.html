@@ -133,6 +133,30 @@
 
   async function fetchQuranVerse(reference) {
     try {
-      const response = await fetch(`https://api.alquran.cloud/v1/ayah/${encodeURIComponent(reference)}/editions/quran
-::contentReference[oaicite:0]{index=0}
- 
+      const response = await fetch(`https://api.alquran.cloud/v1/ayah/${encodeURIComponent(reference)}/editions/quran-simple,en.sahih`);
+      if (!response.ok) throw new Error('Ayah not found');
+      const data = await response.json();
+      const arabicText = data.data[0].text;
+      const englishText = data.data[1].text;
+      const surahNumber = data.data[0].surah.number;
+      const surahNameArabic = data.data[0].surah.name;
+      const surahNameEnglish = data.data[1].surah.englishName;
+      const ayahNumber = data.data[0].numberInSurah;
+      const message = `
+        <strong>🕌 Quran: The Holy Book</strong><br>
+        📜 <strong>Surah:</strong> 🕌❤️ ${surahNumber}: ${surahNameArabic} (${surahNameEnglish}) ❤️🕌<br>
+        📝 <strong>Ayah Number:</strong> ${ayahNumber}<br>
+        🏮 <strong>Arabic Text:</strong> ${arabicText}<br>
+        🏮 <strong>English Translation:</strong> ${englishText}
+      `;
+      displayMessage(message, 'bot');
+    } catch (error) {
+      displayMessage('Sorry, I could not find that Ayah. Please check your reference and try again.', 'bot');
+    }
+  }
+
+  initialPrompt();
+</script>
+
+</body>
+</html>
