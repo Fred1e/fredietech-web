@@ -16,79 +16,112 @@
       height: 100vh;
       margin: 0;
     }
+    .button-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
     .neon-button {
-      background-color: #000;
-      border: 2px solid #0ff;
-      color: #0ff;
-      padding: 10px 20px;
-      margin: 10px;
+      padding: 15px 30px;
+      font-size: 20px;
       cursor: pointer;
       transition: 0.3s;
+      border: none;
+      color: #fff;
+      border-radius: 10px;
+    }
+    .bible-button {
+      background-color: red;
+    }
+    .quran-button {
+      background-color: green;
     }
     .neon-button:hover {
-      background-color: #0ff;
-      color: #000;
+      opacity: 0.8;
     }
     #chat-container {
-      width: 90%;
-      max-width: 800px;
-      height: 70vh;
+      width: 80%;
+      max-width: 800px; /* Increased max-width for larger container */
       background-color: rgba(255, 255, 255, 0.1);
       padding: 20px;
       border-radius: 10px;
       box-shadow: 0 0 10px #0ff;
       display: flex;
       flex-direction: column;
+      align-items: center;
     }
     #messages {
-      flex: 1;
+      width: 100%;
+      max-height: 300px;
       overflow-y: auto;
       margin-bottom: 20px;
     }
     .message {
-      background-color: rgba(0, 0, 0, 0.8);
       padding: 10px;
       border-radius: 5px;
       margin: 5px 0;
+      color: #000;
     }
     .user {
+      background-color: blue;
       text-align: right;
     }
     .bot {
+      background-color: brown;
       text-align: left;
     }
-    #input-area {
+    #input-container {
       display: flex;
+      width: 100%;
     }
     #user-input {
-      flex: 1;
+      flex-grow: 1;
       padding: 10px;
       border: none;
       border-radius: 5px 0 0 5px;
     }
     #send-button {
-      padding: 10px;
+      padding: 10px 20px;
       border: none;
-      background-color: #0ff;
-      color: #000;
+      background-color: #007bff;
+      color: #fff;
       cursor: pointer;
       border-radius: 0 5px 5px 0;
     }
     #send-button:hover {
-      background-color: #0cc;
+      background-color: #0056b3;
+    }
+    #chart-container {
+      width: 100%;
+      max-width: 100%;
+      margin-top: 20px;
+    }
+    #myChart {
+      width: 100%;
+      height: 400px; /* Adjust the height as needed */
     }
   </style>
 </head>
 <body>
 
+<div class="button-container">
+  <button class="neon-button bible-button" onclick="selectBook('Bible')">Bible</button>
+  <button class="neon-button quran-button" onclick="selectBook('Quran')">Quran</button>
+</div>
+
 <div id="chat-container">
   <div id="messages"></div>
-  <div id="input-area">
+  <div id="input-container">
     <input type="text" id="user-input" placeholder="Type your message here..." onkeydown="if(event.key === 'Enter') sendMessage()">
     <button id="send-button" onclick="sendMessage()">Send</button>
   </div>
+  <div id="chart-container">
+    <canvas id="myChart"></canvas>
+  </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
   let selectedBook = '';
 
@@ -98,11 +131,6 @@
     messageContainer.innerHTML = text;
     document.getElementById('messages').appendChild(messageContainer);
     messageContainer.scrollIntoView();
-  }
-
-  function initialPrompt() {
-    displayMessage('Welcome! Please choose one of the following options:', 'bot');
-    displayMessage('<button class="neon-button" onclick="selectBook(\'Bible\')">Bible</button><button class="neon-button" onclick="selectBook(\'Quran\')">Quran</button>', 'bot');
   }
 
   function selectBook(book) {
@@ -146,34 +174,38 @@
         <strong>🉑 LANGUAGE:</strong> ${data.translation_name}
       `;
       displayMessage(message, 'bot');
+      renderChart(data.verses);
     } catch (error) {
       displayMessage('Sorry, I could not find that verse. Please check your reference and try again.', 'bot');
     }
   }
 
   async function fetchQuranVerse(reference) {
-    try {
-      const response = await fetch(`https://api.alquran.cloud/v1/ayah/${encodeURIComponent(reference)}/editions/quran-simple,en.sahih`);
-      if (!response.ok) throw new Error('Ayah not found');
-      const data = await response.json();
-      const arabicText = data.data[0].text;
-      const englishText = data.data[1].text;
-      const surahNumber = data.data[0].surah.number;
-      const surahNameArabic = data.data[0].surah.name;
-      const surahNameEnglish = data.data[1].surah.englishName;
-      const ayahNumber = data.data[0].numberInSurah;
-      const message = `
-        <strong>🕌 Quran: The Holy Book</strong><br>
-        📜 <strong>Surah:</strong> 🕌❤️ ${surahNumber}: ${surahNameArabic} (${surahNameEnglish}) ❤️🕌<br>
-        📝 <strong>Ayah Number:</strong> ${ayahNumber}<br>
-        🏮 <strong>Arabic Text:</strong> ${arabicText}<br>
-        🏮 <strong>English Translation:</strong> ${englishText}
-      `;
-      displayMessage(message, 'bot');
-    } catch (error) {
-      displayMessage('Sorry, I could not find that Ayah. Please check your reference and try again.', 'bot');
-    }
+  try {
+    const response = await fetch(`https://api.alquran.cloud/v1/ayah/${encodeURIComponent(reference)}/editions/quran-simple,en.sahih`);
+    if (!response.ok) throw new Error('Ayah not found');
+    const data = await response.json();
+    const arabicText = data.data[0].text;
+    const englishText = data.data[1].text;
+    const surahNumber = data.data[0].surah.number;
+    const surahNameArabic = data.data[0].surah.name;
+    const surahNameEnglish = data.data[1].surah.englishName;
+    const ayahNumber = data.data[0].numberInSurah;
+    const message = `
+      <strong>🕌 Quran: The Holy Book</strong><br>
+      📜 <strong>Surah:</strong> 🕌❤️ ${surahNumber}: ${surahNameArabic} (${surahNameEnglish}) ❤️🕌<br>
+      📝 <strong>Ayah Number:</strong> ${ayahNumber}<br>
+      🏮 <strong>Arabic Text:</strong> ${arabicText}<br>
+      🏮 <strong>English Translation:</strong> ${englishText}
+    `;
+    displayMessage(message, 'bot');
+  } catch (error) {
+    displayMessage('Sorry, I could not find that Ayah. Please check your reference and try again.', 'bot');
   }
+}
+
+initialPrompt();
+
 </script>
 
 </body>
