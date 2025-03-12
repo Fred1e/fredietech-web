@@ -168,10 +168,10 @@
       if (!response.ok) throw new Error('Verse not found');
       const data = await response.json();
       const message = `
-        <strong>🕍🛐 WE'RE READING 🕍:</strong> ${data.reference}<br>
+        <strong>🛐 WE'RE READING:</strong> ${data.reference}<br>
         <strong>🔢 NUMBER OF VERSES:</strong> ${data.verses.length}<br>
-        <strong>📖 NOW READ:</strong> ${data.text}<br>
-        <strong>🉑 LANGUAGE:</strong> ${data.translation_name}
+        <strong>📖 NOW READ ENGLISH:</strong> ${data.text}<br>
+        <strong>🏮 NOW READ SWAHILI:</strong> ${swahiliText}
       `;
       displayMessage(message, 'bot');
       renderChart(data.verses);
