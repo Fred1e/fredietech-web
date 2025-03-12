@@ -5,157 +5,174 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bible and Quran Verse Finder</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #000;
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      margin: 0;
-    }
-    .neon-button {
-      background-color: #000;
-      border: 2px solid #0ff;
-      color: #0ff;
-      padding: 10px 20px;
-      margin: 10px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-    .neon-button:hover {
-      background-color: #0ff;
-      color: #000;
-    }
-    #chat-container {
-      width: 80%;
-      max-width: 600px;
-      background-color: rgba(255, 255, 255, 0.1);
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px #0ff;
-    }
-    #messages {
-      max-height: 300px;
-      overflow-y: auto;
-      margin-bottom: 20px;
-    }
-    .message {
-      background-color: rgba(0, 0, 0, 0.8);
-      padding: 10px;
-      border-radius: 5px;
-      margin: 5px 0;
-    }
-    .user {
-      text-align: right;
-    }
-    .bot {
-      text-align: left;
-    }
-    #user-input {
-      width: 100%;
-      padding: 10px;
-      border: none;
-      border-radius: 5px;
-    }
+body {
+  font-family: Arial, sans-serif;
+  background-color: #000;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}
+
+#chat-container {
+  width: 90%;
+  max-width: 800px;
+  height: 80vh;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #0ff;
+  display: flex;
+  flex-direction: column;
+}
+
+#messages {
+  flex-grow: 1;
+  overflow-y: auto;
+  margin-bottom: 20px;
+}
+
+.message {
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 10px;
+  border-radius: 5px;
+  margin: 5px 0;
+}
+
+.user {
+  text-align: right;
+}
+
+.bot {
+  text-align: left;
+}
+
+#input-container {
+  display: flex;
+}
+
+#user-input {
+  flex-grow: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 5px 0 0 5px;
+}
+
+#send-button {
+  padding: 10px;
+  border: none;
+  border-radius: 0 5px 5px 0;
+  background-color: #0ff;
+  color: #000;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#send-button:hover {
+  background-color: #00a3a3;
+}
   </style>
 </head>
 <body>
 
 <div id="chat-container">
   <div id="messages"></div>
-  <input type="text" id="user-input" placeholder="Type your message here..." onkeydown="if(event.key === 'Enter') sendMessage()">
+  <div id="input-container">
+    <input type="text" id="user-input" placeholder="Type your message here..." onkeydown="if(event.key === 'Enter') sendMessage()">
+    <button id="send-button" onclick="sendMessage()">Send</button>
+  </div>
 </div>
 
 <script>
-  let selectedBook = '';
+let selectedBook = '';
 
-  function displayMessage(text, sender) {
-    const messageContainer = document.createElement('div');
-    messageContainer.className = 'message ' + sender;
-    messageContainer.innerHTML = text;
-    document.getElementById('messages').appendChild(messageContainer);
-    messageContainer.scrollIntoView();
+function displayMessage(text, sender) {
+  const messageContainer = document.createElement('div');
+  messageContainer.className = 'message ' + sender;
+  messageContainer.innerHTML = text;
+  document.getElementById('messages').appendChild(messageContainer);
+  messageContainer.scrollIntoView();
+}
+
+function initialPrompt() {
+  displayMessage('Welcome! Please choose one of the following options:', 'bot');
+  displayMessage('<button class="neon-button" onclick="selectBook(\'Bible\')">Bible</button><button class="neon-button" onclick="selectBook(\'Quran\')">Quran</button>', 'bot');
+}
+
+function selectBook(book) {
+  selectedBook = book;
+  displayMessage('You selected: ' + book, 'user');
+  if (book === 'Bible') {
+    displayMessage('To search for a Bible verse, enter the book name followed by chapter and verse (e.g., John 3:16).', 'bot');
+  } else {
+    displayMessage('To search for a Quran verse, enter the Surah number followed by Ayah number (e.g., 2:255).', 'bot');
+  }
+}
+
+async function sendMessage() {
+  const inputField = document.getElementById('user-input');
+  const userInput = inputField.value.trim();
+  if (!userInput) return;
+  displayMessage(userInput, 'user');
+  inputField.value = '';
+
+  if (!selectedBook) {
+    displayMessage('Please select either the Bible or the Quran to proceed.', 'bot');
+    return;
   }
 
-  function initialPrompt() {
-    displayMessage('Welcome! Please choose one of the following options:', 'bot');
-    displayMessage('<button class="neon-button" onclick="selectBook(\'Bible\')">Bible</button><button class="neon-button" onclick="selectBook(\'Quran\')">Quran</button>', 'bot');
+  if (selectedBook === 'Bible') {
+    await fetchBibleVerse(userInput);
+  } else {
+    await fetchQuranVerse(userInput);
   }
+}
 
-  function selectBook(book) {
-    selectedBook = book;
-    displayMessage('You selected: ' + book, 'user');
-    if (book === 'Bible') {
-      displayMessage('To search for a Bible verse, enter the book name followed by chapter and verse (e.g., John 3:16).', 'bot');
-    } else {
-      displayMessage('To search for a Quran verse, enter the Surah number followed by Ayah number (e.g., 2:255).', 'bot');
-    }
+async function fetchBibleVerse(reference) {
+  try {
+    const response = await fetch(`https://bible-api.com/${encodeURIComponent(reference)}`);
+    if (!response.ok) throw new Error('Verse not found');
+    const data = await response.json();
+    const message = `
+      <strong>WE'RE READING:</strong> ${data.reference}<br>
+      <strong>NUMBER OF VERSES:</strong> ${data.verses.length}<br>
+      <strong>NOW READ:</strong> ${data.text}<br>
+      <strong>LANGUAGE:</strong> ${data.translation_name}
+    `;
+    displayMessage(message, 'bot');
+  } catch (error) {
+    displayMessage('Sorry, I could not find that verse. Please check your reference and try again.', 'bot');
   }
+}
 
-  async function sendMessage() {
-    const inputField = document.getElementById('user-input');
-    const userInput = inputField.value.trim();
-    if (!userInput) return;
-    displayMessage(userInput, 'user');
-    inputField.value = '';
-
-    if (!selectedBook) {
-      displayMessage('Please select either the Bible or the Quran to proceed.', 'bot');
-      return;
-    }
-
-    if (selectedBook === 'Bible') {
-      await fetchBibleVerse(userInput);
-    } else {
-      await fetchQuranVerse(userInput);
-    }
+async function fetchQuranVerse(reference) {
+  try {
+    const response = await fetch(`https://api.alquran.cloud/v1/ayah/${encodeURIComponent(reference)}/editions/quran-simple,en.sahih`);
+    if (!response.ok) throw new Error('Ayah not found');
+    const data = await response.json();
+    const arabicText = data.data[0].text;
+    const englishText = data.data[1].text;
+    const surahNumber = data.data[0].surah.number;
+    const surahNameArabic = data.data[0].surah.name;
+    const surahNameEnglish = data.data[1].surah.englishName;
+    const ayahNumber = data.data[0].numberInSurah;
+    const message = `
+      <strong>🕌 Quran: The Holy Book</strong><br>
+      📜 <strong>Surah:</strong> 🕌❤️ ${surahNumber}: ${surahNameArabic} (${surahNameEnglish}) ❤️🕌<br>
+      📝 <strong>Ayah Number:</strong> ${ayahNumber}<br>
+      🏮 <strong>Arabic Text:</strong> ${arabicText}<br>
+      🏮 <strong>English Translation:</strong> ${englishText}
+    `;
+    displayMessage(message, 'bot');
+  } catch (error) {
+    displayMessage('Sorry, I could not find that Ayah. Please check your reference and try again.', 'bot');
   }
+}
 
-  async function fetchBibleVerse(reference) {
-    try {
-      const response = await fetch(`https://bible-api.com/${encodeURIComponent(reference)}`);
-      if (!response.ok) throw new Error('Verse not found');
-      const data = await response.json();
-      const message = `
-        <strong>WE'RE READING:</strong> ${data.reference}<br>
-        <strong>NUMBER OF VERSES:</strong> ${data.verses.length}<br>
-        <strong>NOW READ:</strong> ${data.text}<br>
-        <strong>LANGUAGE:</strong> ${data.translation_name}
-      `;
-      displayMessage(message, 'bot');
-    } catch (error) {
-      displayMessage('Sorry, I could not find that verse. Please check your reference and try again.', 'bot');
-    }
-  }
+initialPrompt();
 
-  async function fetchQuranVerse(reference) {
-    try {
-      const response = await fetch(`https://api.alquran.cloud/v1/ayah/${encodeURIComponent(reference)}/editions/quran-simple,en.sahih`);
-      if (!response.ok) throw new Error('Ayah not found');
-      const data = await response.json();
-      const arabicText = data.data[0].text;
-      const englishText = data.data[1].text;
-      const surahNumber = data.data[0].surah.number;
-      const surahNameArabic = data.data[0].surah.name;
-      const surahNameEnglish = data.data[1].surah.englishName;
-      const ayahNumber = data.data[0].numberInSurah;
-      const message = `
-        <strong>🕌 Quran: The Holy Book</strong><br>
-        📜 <strong>Surah:</strong> 🕌❤️ ${surahNumber}: ${surahNameArabic} (${surahNameEnglish}) ❤️🕌<br>
-        📝 <strong>Ayah Number:</strong> ${ayahNumber}<br>
-        🏮 <strong>Arabic Text:</strong> ${arabicText}<br>
-        🏮 <strong>English Translation:</strong> ${englishText}
-      `;
-      displayMessage(message, 'bot');
-    } catch (error) {
-      displayMessage('Sorry, I could not find that Ayah. Please check your reference and try again.', 'bot');
-    }
-  }
-
-  initialPrompt();
 </script>
 
 </body>
