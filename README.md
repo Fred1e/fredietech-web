@@ -99,10 +99,10 @@ Designed a cross-platform mobile application that enables users to monitor their
 
 We'd love to hear from you! If you have any questions, project inquiries, or collaboration ideas, feel free to reach out:
 
-- **Email:** frediezra360@gmail.com
-- **Phone:** +255 620 814 108
-- **phone2:** +255 752 593 977
-- **Address:** 123 Tech Avenue, Innovation City, Country
+- **Email:** [frediezra360@gmail.com](frediezra360@gmail.com)
+- **Phone:** [+255 620 814 108](+255620814108)
+- **phone2:** [+255 752 593 977](+255752593977)
+- **Address:** P.O.BOX 8087, Arusha, Tanzania 
 
 
 2025 copyright FrediEtech
