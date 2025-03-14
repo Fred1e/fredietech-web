@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FredieTech Live Chat</title>
+  <!-- Link to external CSS -->
+  <link rel="stylesheet" href="assets/chat.css">
+  <!-- Font Awesome for icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <header>
+    <h1>FredieTech Live Chat</h1>
+    <button id="theme-toggle" onclick="toggleTheme()">Switch to Light Mode</button>
+  </header>
+
+  <div id="chat-container">
+    <div id="messages">
+      <div class="message ai-message">AI: Hi! Ask me anything about programming, chatbots, or media!</div>
+    </div>
+    <div id="input-area">
+      <div class="input-row">
+        <input type="text" id="chat-input" placeholder="Type your message here...">
+        <button id="send-btn" onclick="sendMessage()">Send</button>
+      </div>
+      <div class="input-row">
+        <button id="attach-btn" onclick="document.getElementById('file-input').click()">Attach</button>
+        <input type="file" id="file-input" accept="image/*,audio/*">
+      </div>
+    </div>
+  </div>
+
+  <!-- Google AdSense -->
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-2103477250263009"
+       data-ad-slot="1234567890"
+       data-ad-format="auto"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
+  <!-- Link to external JavaScript -->
+  <script src="JavaScript/chat.js"></script>
+
+  <!-- Back to Home Link -->
+  <a href="index.html" style="display: block; margin-top: 20px; color: lightblue;">Back to Home</a>
+
+</body>
+</html>
